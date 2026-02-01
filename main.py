@@ -1,32 +1,56 @@
-from .models.TeamGraph import TeamGraph
-from .algorithms.dijkstra import dijkstra_explain
+import requests
 
-graph = TeamGraph()
+def normalize_match(raw_match):
+    return {
+        "home": raw_match["team1"],
+        "away": raw_match["team2"],
+        "ft": raw_match["score"]["ft"]
+    }
 
-graph.add_match("TeamA", "TeamB", "G")  
-graph.add_match("TeamB", "TeamC", "E")  
-graph.add_match("TeamA", "TeamC", "P")  
-graph.add_match("TeamC", "TeamD", "G")  
-graph.add_match("TeamB", "TeamD", "P")  
+def result_for_team(match, team_name):
+    home_goals, away_goals = match["ft"]
 
-cost, path, explanation = dijkstra_explain(
-    graph,
-    start_team="TeamA",
-    target_team="TeamD"
-)
+    if match["home"] == team_name:
+        if home_goals > away_goals:
+            return "W"
+        elif home_goals < away_goals:
+            return "L"
+        else:
+            return "D"
 
-print("=== RESULTADO ===")
-print("Costo total:", cost)
-print("Camino óptimo:", path)
+    if match["away"] == team_name:
+        if away_goals > home_goals:
+            return "W"
+        elif away_goals < home_goals:
+            return "L"
+        else:
+            return "D"
 
-print("\n=== EXPLICACIÓN ===")
-print("Equipos visitados:", explanation["visited_teams"])
+    return None  # el equipo no participó
+def recent_form(matches, team_name, n=5):
+    results = []
 
-print("\nRelajaciones:")
-for r in explanation["relaxations"]:
-    print(
-        f"{r['from_team']} -> {r['to_team']} | "
-        f"resultado={r['match_result']} | "
-        f"costo_arista={r['edge_cost']} | "
-        f"nuevo_costo={r['new_cost']}"
-    )
+    # recorrer del más reciente al más viejo
+    for match in reversed(matches):
+        r = result_for_team(match, team_name)
+        if r:
+            results.append(r)
+        if len(results) == n:
+            break
+
+    return "".join(reversed(results))  # orden cronológico
+
+url = "https://raw.githubusercontent.com/openfootball/football.json/master/2024-25/es.1.json"
+data = requests.get(url).json()
+print("Datos de la temporada:", data)
+matches = [normalize_match(m) for m in data["matches"]]
+
+
+teamA = "Fulham FC"
+teamB = "Chelsea FC"
+
+formA = recent_form(matches, teamA, n=15)
+formB = recent_form(matches, teamB, n=15)
+
+print("teamA:", formA)
+print("teamB:", formB)
