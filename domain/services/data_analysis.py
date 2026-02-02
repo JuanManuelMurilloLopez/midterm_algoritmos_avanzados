@@ -4,8 +4,6 @@ def print_analysis(df):
     print("=== HEAD ===")
     print(df.head())
 
-    print("\n=== INFO ===")
-    print(df.info())
 
     print("\n=== ACCURACY ===")
     print(df["correct"].mean())

@@ -1,0 +1,3 @@
+ANtes isn añadir un valor en seleccionar a un ganador
+=== ACCURACY ===
+0.3939393939393939

@@ -5,7 +5,7 @@ from algorithms.kmp import kmp_contains
 from algorithms.z_function import z_relevance
 from algorithms.z_function import z_function
 from algorithms.rhythm import rhythm_score
-
+from algorithms.dijkstra import dijkstra_explain
 
 class Predictor:
     def __init__(self, window_size=5):
@@ -18,7 +18,14 @@ class Predictor:
         return max(z)
 
 
-    def predict(self, teamA, teamB):
+    def predict(self, teamA, teamB, graph=None):
+        epsilon = 1 / self.window_size  
+        
+        candidate_pairs = []
+        
+        best_lcs = 0
+        best_pattern = ""
+
         rhythm_A = rhythm_score(teamA.form[-self.window_size:])
         rhythm_B = rhythm_score(teamB.form[-self.window_size:])
 
@@ -30,9 +37,6 @@ class Predictor:
             key = h_val[-1]              
             hashA.setdefault(key, []).append(w)
 
-
-        candidate_pairs = []
-
         for w in windowsB:
             h_val, _ = rolling_hash(w)
             h = h_val[-1]
@@ -42,11 +46,6 @@ class Predictor:
                     candidate_pairs.append((wa, w))
         if not candidate_pairs:
             candidate_pairs = [(a, b) for a in windowsA for b in windowsB]
-
-
-
-        best_lcs = 0
-        best_pattern = ""
 
         for wA, wB in candidate_pairs:
             lcs_len, substring, _ = longest_common_substring(wA, wB)
@@ -59,13 +58,27 @@ class Predictor:
         zA = z_relevance(best_pattern, teamA.form)
         zB = z_relevance(best_pattern, teamB.form)
 
+        delta = rhythm_A - rhythm_B
+        pattern_weight = best_lcs / self.window_size if best_lcs > 0 else 0
+        adjusted_delta = delta * (1 + pattern_weight)
+        epsilon = 1 / self.window_size
 
-        if rhythm_A > rhythm_B:
+        if abs(adjusted_delta) < epsilon:
+            winner = "DRAW"
+        elif adjusted_delta > 0:
             winner = teamA.name
-        elif rhythm_B > rhythm_A:
-            winner = teamB.name
         else:
-            winner = "Draw"
+            winner = teamB.name
+
+        if winner == "DRAW" and graph is not None:
+            cost, _, _ = dijkstra_explain(
+                graph,
+                start=teamA.name,
+                target=teamB.name
+            )
+            if cost < 0.9:
+                winner = teamB.name
+
 
         explanation = {
             "teamA": teamA.name,

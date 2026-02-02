@@ -2,36 +2,36 @@ match,predicted_winner,actual_winner,correct,rhythm_home,rhythm_away,common_patt
 Newcastle United FC vs Manchester City FC,Manchester City FC,DRAW,False,0.4,0.8,WD
 Arsenal FC vs Leicester City FC,Arsenal FC,Arsenal FC,True,0.6,-0.4,D
 Brentford FC vs West Ham United FC,Brentford FC,DRAW,False,-0.2,-0.4,LWL
-Chelsea FC vs Brighton & Hove Albion FC,Draw,Chelsea FC,False,0.4,0.4,WD
+Chelsea FC vs Brighton & Hove Albion FC,DRAW,Chelsea FC,False,0.4,0.4,WD
 Everton FC vs Crystal Palace FC,Crystal Palace FC,Everton FC,False,-0.8,-0.4,LLD
 Nottingham Forest FC vs Fulham FC,Nottingham Forest FC,Fulham FC,False,0.4,0.2,DW
 Wolverhampton Wanderers FC vs Liverpool FC,Liverpool FC,Liverpool FC,True,-0.8,0.6,L
 Ipswich Town FC vs Aston Villa FC,Aston Villa FC,DRAW,False,-0.4,0.6,L
-Manchester United FC vs Tottenham Hotspur FC,Draw,Tottenham Hotspur FC,False,0.0,0.0,WLLW
+Manchester United FC vs Tottenham Hotspur FC,DRAW,Tottenham Hotspur FC,False,0.0,0.0,WLLW
 AFC Bournemouth vs Southampton FC,AFC Bournemouth,AFC Bournemouth,True,-0.2,-0.8,LL
 Crystal Palace FC vs Liverpool FC,Liverpool FC,Liverpool FC,True,-0.4,0.6,L
 Arsenal FC vs Southampton FC,Arsenal FC,Arsenal FC,True,0.6,-0.8,D
 Brentford FC vs Wolverhampton Wanderers FC,Brentford FC,Brentford FC,True,-0.4,-0.8,LL
 Leicester City FC vs AFC Bournemouth,AFC Bournemouth,Leicester City FC,False,-0.6,0.0,LL
-Manchester City FC vs Fulham FC,Draw,Manchester City FC,False,0.6,0.6,WDD
-West Ham United FC vs Ipswich Town FC,Draw,West Ham United FC,False,-0.2,-0.2,LD
+Manchester City FC vs Fulham FC,DRAW,Manchester City FC,False,0.6,0.6,WDD
+West Ham United FC vs Ipswich Town FC,DRAW,West Ham United FC,False,-0.2,-0.2,LD
 Everton FC vs Newcastle United FC,Newcastle United FC,DRAW,False,-0.4,0.2,LD
 Aston Villa FC vs Manchester United FC,Aston Villa FC,DRAW,False,0.4,-0.4,LW
 Chelsea FC vs Nottingham Forest FC,Chelsea FC,DRAW,False,0.8,0.2,WDW
 Brighton & Hove Albion FC vs Tottenham Hotspur FC,Tottenham Hotspur FC,Brighton & Hove Albion FC,False,0.0,0.2,W
-Tottenham Hotspur FC vs West Ham United FC,Draw,Tottenham Hotspur FC,False,-0.2,-0.2,L
+Tottenham Hotspur FC vs West Ham United FC,DRAW,Tottenham Hotspur FC,False,-0.2,-0.2,L
 Fulham FC vs Aston Villa FC,Aston Villa FC,Aston Villa FC,True,0.2,0.6,DD
-Ipswich Town FC vs Everton FC,Draw,Everton FC,False,-0.2,-0.2,D
+Ipswich Town FC vs Everton FC,DRAW,Everton FC,False,-0.2,-0.2,D
 Manchester United FC vs Brentford FC,Brentford FC,Manchester United FC,False,-0.2,0.0,LD
 Newcastle United FC vs Brighton & Hove Albion FC,Newcastle United FC,Brighton & Hove Albion FC,False,0.2,0.0,DD
 Southampton FC vs Leicester City FC,Leicester City FC,Leicester City FC,True,-0.8,-0.2,LD
 AFC Bournemouth vs Arsenal FC,Arsenal FC,AFC Bournemouth,False,-0.2,0.6,W
 Wolverhampton Wanderers FC vs Manchester City FC,Manchester City FC,Manchester City FC,True,-0.8,0.6,D
-Liverpool FC vs Chelsea FC,Draw,Liverpool FC,False,0.6,0.6,WWW
+Liverpool FC vs Chelsea FC,DRAW,Liverpool FC,False,0.6,0.6,WWW
 Nottingham Forest FC vs Crystal Palace FC,Nottingham Forest FC,Nottingham Forest FC,True,0.0,-0.4,DL
-Leicester City FC vs Nottingham Forest FC,Draw,Nottingham Forest FC,False,0.2,0.2,DL
+Leicester City FC vs Nottingham Forest FC,DRAW,Nottingham Forest FC,False,0.2,0.2,DL
 Aston Villa FC vs AFC Bournemouth,Aston Villa FC,DRAW,False,0.6,-0.2,W
-Brentford FC vs Ipswich Town FC,Draw,Brentford FC,False,-0.4,-0.4,LL
+Brentford FC vs Ipswich Town FC,DRAW,Brentford FC,False,-0.4,-0.4,LL
 Brighton & Hove Albion FC vs Wolverhampton Wanderers FC,Brighton & Hove Albion FC,DRAW,False,0.2,-1.0,L
 Manchester City FC vs Southampton FC,Manchester City FC,Manchester City FC,True,0.6,-0.8,D
 Everton FC vs Fulham FC,Everton FC,DRAW,False,0.2,0.0,DW
@@ -48,18 +48,18 @@ Southampton FC vs Everton FC,Everton FC,Southampton FC,False,-0.8,0.4,D
 Wolverhampton Wanderers FC vs Crystal Palace FC,Crystal Palace FC,DRAW,False,-0.8,-0.4,LLL
 Tottenham Hotspur FC vs Aston Villa FC,Aston Villa FC,Tottenham Hotspur FC,False,0.2,0.4,W
 Manchester United FC vs Chelsea FC,Chelsea FC,DRAW,False,-0.2,0.4,DL
-Fulham FC vs Brentford FC,Draw,Fulham FC,False,0.0,0.0,WL
+Fulham FC vs Brentford FC,DRAW,Fulham FC,False,0.0,0.0,WL
 Brentford FC vs AFC Bournemouth,AFC Bournemouth,Brentford FC,False,0.0,0.4,WLW
 Crystal Palace FC vs Fulham FC,Fulham FC,Fulham FC,True,-0.4,0.0,LL
 West Ham United FC vs Everton FC,Everton FC,DRAW,False,0.0,0.2,DW
-Wolverhampton Wanderers FC vs Southampton FC,Draw,Wolverhampton Wanderers FC,False,-0.6,-0.6,LLL
+Wolverhampton Wanderers FC vs Southampton FC,DRAW,Wolverhampton Wanderers FC,False,-0.6,-0.6,LLL
 Brighton & Hove Albion FC vs Manchester City FC,Manchester City FC,Brighton & Hove Albion FC,False,0.0,0.4,WW
 Liverpool FC vs Aston Villa FC,Liverpool FC,Liverpool FC,True,0.8,0.0,WD
 Manchester United FC vs Leicester City FC,Leicester City FC,Manchester United FC,False,-0.2,0.0,WLD
 Nottingham Forest FC vs Newcastle United FC,Nottingham Forest FC,Newcastle United FC,False,0.4,-0.2,L
 Tottenham Hotspur FC vs Ipswich Town FC,Tottenham Hotspur FC,Ipswich Town FC,False,0.2,-0.6,L
 Chelsea FC vs Arsenal FC,Chelsea FC,DRAW,False,0.2,0.0,DL
-Leicester City FC vs Chelsea FC,Draw,Chelsea FC,False,0.0,0.0,DL
+Leicester City FC vs Chelsea FC,DRAW,Chelsea FC,False,0.0,0.0,DL
 AFC Bournemouth vs Brighton & Hove Albion FC,Brighton & Hove Albion FC,Brighton & Hove Albion FC,True,0.0,0.4,LW
 Arsenal FC vs Nottingham Forest FC,Nottingham Forest FC,Arsenal FC,False,-0.2,0.4,WL
 Aston Villa FC vs Crystal Palace FC,Aston Villa FC,DRAW,False,-0.2,-0.4,WDL
@@ -68,10 +68,10 @@ Fulham FC vs Wolverhampton Wanderers FC,Fulham FC,Wolverhampton Wanderers FC,Fal
 Manchester City FC vs Tottenham Hotspur FC,Manchester City FC,Tottenham Hotspur FC,False,0.2,-0.2,WL
 Southampton FC vs Liverpool FC,Liverpool FC,Liverpool FC,True,-0.6,0.8,W
 Ipswich Town FC vs Manchester United FC,Manchester United FC,DRAW,False,-0.4,0.2,LDW
-Newcastle United FC vs West Ham United FC,Draw,West Ham United FC,False,0.0,0.0,LW
+Newcastle United FC vs West Ham United FC,DRAW,West Ham United FC,False,0.0,0.0,LW
 Brighton & Hove Albion FC vs Southampton FC,Brighton & Hove Albion FC,DRAW,False,0.4,-0.6,LW
 Brentford FC vs Leicester City FC,Brentford FC,Brentford FC,True,0.0,-0.4,WL
-Crystal Palace FC vs Newcastle United FC,Draw,DRAW,False,-0.2,-0.2,LW
+Crystal Palace FC vs Newcastle United FC,DRAW,DRAW,True,-0.2,-0.2,LW
 Nottingham Forest FC vs Ipswich Town FC,Nottingham Forest FC,Nottingham Forest FC,True,0.2,-0.2,LL
 Wolverhampton Wanderers FC vs AFC Bournemouth,Wolverhampton Wanderers FC,AFC Bournemouth,False,0.2,0.0,DW
 West Ham United FC vs Arsenal FC,West Ham United FC,Arsenal FC,False,0.0,-0.2,LDW
@@ -85,15 +85,15 @@ Everton FC vs Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,Everton FC,F
 Manchester City FC vs Nottingham Forest FC,Nottingham Forest FC,Manchester City FC,False,-0.6,0.2,WLL
 Newcastle United FC vs Liverpool FC,Liverpool FC,DRAW,False,0.0,0.8,WW
 Southampton FC vs Chelsea FC,Chelsea FC,Chelsea FC,True,-0.4,0.6,W
-Arsenal FC vs Manchester United FC,Draw,Arsenal FC,False,0.2,0.2,LDW
+Arsenal FC vs Manchester United FC,DRAW,Arsenal FC,False,0.2,0.2,LDW
 Aston Villa FC vs Brentford FC,Brentford FC,Aston Villa FC,False,-0.6,0.4,D
-Fulham FC vs Brighton & Hove Albion FC,Draw,Fulham FC,False,0.2,0.2,WW
-AFC Bournemouth vs Tottenham Hotspur FC,Draw,AFC Bournemouth,False,0.0,0.0,WL
-Aston Villa FC vs Southampton FC,Draw,Aston Villa FC,False,-0.4,-0.4,LLDL
+Fulham FC vs Brighton & Hove Albion FC,DRAW,Fulham FC,False,0.2,0.2,WW
+AFC Bournemouth vs Tottenham Hotspur FC,DRAW,AFC Bournemouth,False,0.0,0.0,WL
+Aston Villa FC vs Southampton FC,DRAW,Aston Villa FC,False,-0.4,-0.4,LLDL
 Brentford FC vs Newcastle United FC,Newcastle United FC,Brentford FC,False,0.0,0.2,WL
 Crystal Palace FC vs Manchester City FC,Crystal Palace FC,DRAW,False,0.0,-0.6,L
 Manchester United FC vs Nottingham Forest FC,Manchester United FC,Nottingham Forest FC,False,0.2,-0.2,WL
-Fulham FC vs Arsenal FC,Draw,DRAW,False,0.4,0.4,LDW
+Fulham FC vs Arsenal FC,DRAW,DRAW,True,0.4,0.4,LDW
 Ipswich Town FC vs AFC Bournemouth,AFC Bournemouth,AFC Bournemouth,True,-0.2,0.2,LL
 Leicester City FC vs Brighton & Hove Albion FC,Brighton & Hove Albion FC,DRAW,False,-0.4,0.0,DL
 Tottenham Hotspur FC vs Chelsea FC,Chelsea FC,Chelsea FC,True,0.0,0.6,W
@@ -121,7 +121,7 @@ Tottenham Hotspur FC vs Liverpool FC,Liverpool FC,Liverpool FC,True,0.0,0.6,WD
 Manchester City FC vs Everton FC,Everton FC,DRAW,False,-0.4,0.0,LWD
 AFC Bournemouth vs Crystal Palace FC,AFC Bournemouth,DRAW,False,0.8,0.2,WDW
 Chelsea FC vs Fulham FC,Chelsea FC,Fulham FC,False,0.8,0.2,WD
-Newcastle United FC vs Aston Villa FC,Draw,Newcastle United FC,False,0.2,0.2,LWW
+Newcastle United FC vs Aston Villa FC,DRAW,Newcastle United FC,False,0.2,0.2,LWW
 Nottingham Forest FC vs Tottenham Hotspur FC,Nottingham Forest FC,Nottingham Forest FC,True,0.6,-0.4,WL
 Southampton FC vs West Ham United FC,West Ham United FC,West Ham United FC,True,-0.6,-0.2,LL
 Wolverhampton Wanderers FC vs Manchester United FC,Manchester United FC,Wolverhampton Wanderers FC,False,-0.6,-0.2,LLW
@@ -181,7 +181,7 @@ Fulham FC vs Manchester United FC,Fulham FC,Manchester United FC,False,0.2,-0.4,
 Nottingham Forest FC vs Brighton & Hove Albion FC,Nottingham Forest FC,Nottingham Forest FC,True,0.4,0.2,WW
 Newcastle United FC vs Fulham FC,Newcastle United FC,Fulham FC,False,0.6,-0.2,WL
 Everton FC vs Leicester City FC,Everton FC,Everton FC,True,-0.2,-0.6,LLLW
-AFC Bournemouth vs Liverpool FC,Draw,Liverpool FC,False,0.6,0.6,DWW
+AFC Bournemouth vs Liverpool FC,DRAW,Liverpool FC,False,0.6,0.6,DWW
 Ipswich Town FC vs Southampton FC,Ipswich Town FC,Southampton FC,False,-0.4,-1.0,LLL
 Wolverhampton Wanderers FC vs Aston Villa FC,Aston Villa FC,Wolverhampton Wanderers FC,False,-0.8,0.4,D
 Manchester United FC vs Crystal Palace FC,Crystal Palace FC,Crystal Palace FC,True,0.0,0.4,DW
@@ -196,32 +196,32 @@ West Ham United FC vs Brentford FC,Brentford FC,Brentford FC,True,-0.4,0.0,LWL
 Aston Villa FC vs Ipswich Town FC,Aston Villa FC,DRAW,False,0.2,-0.8,DL
 Manchester City FC vs Newcastle United FC,Manchester City FC,Manchester City FC,True,0.4,0.2,WWL
 Fulham FC vs Nottingham Forest FC,Nottingham Forest FC,Fulham FC,False,0.0,0.4,WLW
-Crystal Palace FC vs Everton FC,Draw,Everton FC,False,0.4,0.4,WW
+Crystal Palace FC vs Everton FC,DRAW,Everton FC,False,0.4,0.4,WW
 Liverpool FC vs Wolverhampton Wanderers FC,Liverpool FC,Liverpool FC,True,0.6,-0.6,W
 Tottenham Hotspur FC vs Manchester United FC,Manchester United FC,Tottenham Hotspur FC,False,-0.6,0.0,LW
 Aston Villa FC vs Liverpool FC,Liverpool FC,DRAW,False,0.0,0.8,WD
 Leicester City FC vs Brentford FC,Brentford FC,Brentford FC,True,-0.6,0.0,LWL
 Everton FC vs Manchester United FC,Everton FC,DRAW,False,0.8,-0.2,W
 Ipswich Town FC vs Tottenham Hotspur FC,Tottenham Hotspur FC,Tottenham Hotspur FC,True,-0.8,-0.2,LLL
-Fulham FC vs Crystal Palace FC,Draw,Crystal Palace FC,False,0.2,0.2,LWL
+Fulham FC vs Crystal Palace FC,DRAW,Crystal Palace FC,False,0.2,0.2,LWL
 Arsenal FC vs West Ham United FC,Arsenal FC,West Ham United FC,False,0.8,-0.4,W
 AFC Bournemouth vs Wolverhampton Wanderers FC,AFC Bournemouth,Wolverhampton Wanderers FC,False,0.4,-0.6,WL
 Southampton FC vs Brighton & Hove Albion FC,Brighton & Hove Albion FC,Brighton & Hove Albion FC,True,-0.6,0.2,LLW
 Aston Villa FC vs Chelsea FC,Chelsea FC,Aston Villa FC,False,-0.2,0.0,D
 Newcastle United FC vs Nottingham Forest FC,Nottingham Forest FC,Newcastle United FC,False,-0.2,0.0,WLWL
 Manchester City FC vs Liverpool FC,Liverpool FC,Liverpool FC,True,0.4,0.6,DW
-Brighton & Hove Albion FC vs AFC Bournemouth,Draw,Brighton & Hove Albion FC,False,0.2,0.2,WL
+Brighton & Hove Albion FC vs AFC Bournemouth,DRAW,Brighton & Hove Albion FC,False,0.2,0.2,WL
 Crystal Palace FC vs Aston Villa FC,Crystal Palace FC,Crystal Palace FC,True,0.2,0.0,W
 Wolverhampton Wanderers FC vs Fulham FC,Fulham FC,Fulham FC,True,-0.2,0.2,WLW
 Chelsea FC vs Southampton FC,Chelsea FC,Chelsea FC,True,-0.2,-0.6,LWLL
 Nottingham Forest FC vs Arsenal FC,Arsenal FC,DRAW,False,-0.2,0.4,WL
 Brentford FC vs Everton FC,Everton FC,DRAW,False,0.2,0.6,WW
-Tottenham Hotspur FC vs Manchester City FC,Draw,Manchester City FC,False,0.2,0.2,LW
+Tottenham Hotspur FC vs Manchester City FC,DRAW,Manchester City FC,False,0.2,0.2,LW
 Manchester United FC vs Ipswich Town FC,Manchester United FC,Manchester United FC,True,-0.4,-0.8,LLD
 Liverpool FC vs Newcastle United FC,Liverpool FC,Liverpool FC,True,0.6,-0.2,W
 West Ham United FC vs Leicester City FC,West Ham United FC,West Ham United FC,True,-0.4,-0.6,LL
 Nottingham Forest FC vs Manchester City FC,Manchester City FC,Nottingham Forest FC,False,-0.4,0.2,LWL
-Brighton & Hove Albion FC vs Fulham FC,Draw,Brighton & Hove Albion FC,False,0.2,0.2,LWW
+Brighton & Hove Albion FC vs Fulham FC,DRAW,Brighton & Hove Albion FC,False,0.2,0.2,LWW
 Crystal Palace FC vs Ipswich Town FC,Crystal Palace FC,Crystal Palace FC,True,0.2,-0.8,L
 Liverpool FC vs Southampton FC,Liverpool FC,Liverpool FC,True,0.6,-0.6,W
 Brentford FC vs Aston Villa FC,Brentford FC,Aston Villa FC,False,0.4,-0.2,WL
@@ -235,11 +235,11 @@ Ipswich Town FC vs Nottingham Forest FC,Nottingham Forest FC,Nottingham Forest F
 Manchester City FC vs Brighton & Hove Albion FC,Brighton & Hove Albion FC,DRAW,False,-0.2,0.6,LW
 Southampton FC vs Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,True,-0.6,0.0,WL
 AFC Bournemouth vs Brentford FC,Brentford FC,Brentford FC,True,-0.4,0.0,LW
-Arsenal FC vs Chelsea FC,Draw,Arsenal FC,False,0.2,0.2,WW
+Arsenal FC vs Chelsea FC,DRAW,Arsenal FC,False,0.2,0.2,WW
 Fulham FC vs Tottenham Hotspur FC,Tottenham Hotspur FC,Fulham FC,False,0.2,0.4,WWL
 Leicester City FC vs Manchester United FC,Manchester United FC,Manchester United FC,True,-1.0,-0.2,LL
-Arsenal FC vs Fulham FC,Draw,Arsenal FC,False,0.2,0.2,WL
-Wolverhampton Wanderers FC vs West Ham United FC,Draw,Wolverhampton Wanderers FC,False,0.0,0.0,WLD
+Arsenal FC vs Fulham FC,DRAW,Arsenal FC,False,0.2,0.2,WL
+Wolverhampton Wanderers FC vs West Ham United FC,DRAW,Wolverhampton Wanderers FC,False,0.0,0.0,WLD
 Nottingham Forest FC vs Manchester United FC,Manchester United FC,Nottingham Forest FC,False,0.0,0.2,LDW
 AFC Bournemouth vs Ipswich Town FC,AFC Bournemouth,Ipswich Town FC,False,-0.4,-0.8,LL
 Brighton & Hove Albion FC vs Aston Villa FC,Brighton & Hove Albion FC,Aston Villa FC,False,0.8,0.2,W
@@ -249,10 +249,10 @@ Southampton FC vs Crystal Palace FC,Crystal Palace FC,DRAW,False,-1.0,0.6,L
 Liverpool FC vs Everton FC,Liverpool FC,Liverpool FC,True,0.8,0.2,WD
 Chelsea FC vs Tottenham Hotspur FC,Tottenham Hotspur FC,Chelsea FC,False,-0.2,0.0,WWL
 Everton FC vs Arsenal FC,Arsenal FC,DRAW,False,-0.2,0.2,DD
-Crystal Palace FC vs Brighton & Hove Albion FC,Draw,Crystal Palace FC,False,0.4,0.4,WWWD
+Crystal Palace FC vs Brighton & Hove Albion FC,DRAW,Crystal Palace FC,False,0.4,0.4,WWWD
 Ipswich Town FC vs Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,True,-0.6,0.4,L
 West Ham United FC vs AFC Bournemouth,West Ham United FC,DRAW,False,0.0,-0.8,LDL
-Aston Villa FC vs Nottingham Forest FC,Draw,Aston Villa FC,False,0.4,0.4,DW
+Aston Villa FC vs Nottingham Forest FC,DRAW,Aston Villa FC,False,0.4,0.4,DW
 Brentford FC vs Chelsea FC,Chelsea FC,DRAW,False,0.0,0.2,LW
 Fulham FC vs Liverpool FC,Liverpool FC,Fulham FC,False,-0.2,0.8,W
 Tottenham Hotspur FC vs Southampton FC,Tottenham Hotspur FC,Tottenham Hotspur FC,True,-0.4,-0.8,LD
@@ -269,7 +269,7 @@ Wolverhampton Wanderers FC vs Tottenham Hotspur FC,Wolverhampton Wanderers FC,Wo
 Newcastle United FC vs Manchester United FC,Newcastle United FC,Newcastle United FC,True,0.6,0.2,WL
 AFC Bournemouth vs Fulham FC,Fulham FC,AFC Bournemouth,False,-0.6,0.2,L
 Newcastle United FC vs Crystal Palace FC,Newcastle United FC,Newcastle United FC,True,0.6,0.4,WW
-Brentford FC vs Brighton & Hove Albion FC,Draw,Brentford FC,False,-0.2,-0.2,LD
+Brentford FC vs Brighton & Hove Albion FC,DRAW,Brentford FC,False,-0.2,-0.2,LD
 Crystal Palace FC vs AFC Bournemouth,Crystal Palace FC,DRAW,False,0.0,-0.2,DW
 Everton FC vs Manchester City FC,Manchester City FC,Manchester City FC,True,0.0,0.2,LDW
 West Ham United FC vs Southampton FC,West Ham United FC,DRAW,False,-0.6,-0.8,LDL
@@ -288,31 +288,31 @@ Southampton FC vs Fulham FC,Fulham FC,Fulham FC,True,-0.6,-0.2,LL
 Wolverhampton Wanderers FC vs Leicester City FC,Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,True,1.0,-0.8,
 AFC Bournemouth vs Manchester United FC,AFC Bournemouth,DRAW,False,-0.2,-0.4,LL
 Liverpool FC vs Tottenham Hotspur FC,Liverpool FC,Liverpool FC,True,0.6,-0.6,WL
-Nottingham Forest FC vs Brentford FC,Draw,Brentford FC,False,0.2,0.2,WL
+Nottingham Forest FC vs Brentford FC,DRAW,Brentford FC,False,0.2,0.2,WL
 Manchester City FC vs Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,Manchester City FC,False,0.8,1.0,WWW
 Aston Villa FC vs Fulham FC,Aston Villa FC,Aston Villa FC,True,0.6,-0.2,WL
-Everton FC vs Ipswich Town FC,Draw,DRAW,False,-0.4,-0.4,LD
+Everton FC vs Ipswich Town FC,DRAW,DRAW,True,-0.4,-0.4,LD
 Leicester City FC vs Southampton FC,Southampton FC,Leicester City FC,False,-0.8,-0.6,LLDL
 Arsenal FC vs AFC Bournemouth,Arsenal FC,AFC Bournemouth,False,0.4,0.0,WDD
 Brentford FC vs Manchester United FC,Brentford FC,Brentford FC,True,0.2,-0.6,LD
 Brighton & Hove Albion FC vs Newcastle United FC,Newcastle United FC,DRAW,False,-0.4,0.6,LW
-West Ham United FC vs Tottenham Hotspur FC,Draw,DRAW,False,-0.6,-0.6,L
-Chelsea FC vs Liverpool FC,Draw,Chelsea FC,False,0.6,0.6,WW
-Crystal Palace FC vs Nottingham Forest FC,Draw,DRAW,False,-0.2,-0.2,WLL
-Fulham FC vs Everton FC,Draw,Everton FC,False,-0.2,-0.2,WLL
+West Ham United FC vs Tottenham Hotspur FC,DRAW,DRAW,True,-0.6,-0.6,L
+Chelsea FC vs Liverpool FC,DRAW,Chelsea FC,False,0.6,0.6,WW
+Crystal Palace FC vs Nottingham Forest FC,DRAW,DRAW,True,-0.2,-0.2,WLL
+Fulham FC vs Everton FC,DRAW,Everton FC,False,-0.2,-0.2,WLL
 Ipswich Town FC vs Brentford FC,Brentford FC,Brentford FC,True,-0.6,0.6,D
 Southampton FC vs Manchester City FC,Manchester City FC,DRAW,False,-0.8,0.8,D
 Wolverhampton Wanderers FC vs Brighton & Hove Albion FC,Wolverhampton Wanderers FC,Brighton & Hove Albion FC,False,0.6,-0.2,W
 AFC Bournemouth vs Aston Villa FC,Aston Villa FC,Aston Villa FC,True,0.4,0.6,W
 Newcastle United FC vs Chelsea FC,Chelsea FC,Newcastle United FC,False,0.4,0.6,WW
 Manchester United FC vs West Ham United FC,West Ham United FC,West Ham United FC,True,-0.6,-0.4,LDL
-Nottingham Forest FC vs Leicester City FC,Draw,DRAW,False,-0.4,-0.4,LLW
-Tottenham Hotspur FC vs Crystal Palace FC,Draw,Crystal Palace FC,False,-0.4,-0.4,LLD
+Nottingham Forest FC vs Leicester City FC,DRAW,DRAW,True,-0.4,-0.4,LLW
+Tottenham Hotspur FC vs Crystal Palace FC,DRAW,Crystal Palace FC,False,-0.4,-0.4,LLD
 Liverpool FC vs Arsenal FC,Liverpool FC,DRAW,False,0.2,0.0,L
 Aston Villa FC vs Tottenham Hotspur FC,Aston Villa FC,Aston Villa FC,True,0.6,-0.8,L
 Chelsea FC vs Manchester United FC,Chelsea FC,Chelsea FC,True,0.4,-0.8,D
 Everton FC vs Southampton FC,Everton FC,Everton FC,True,0.0,-0.6,LLD
-West Ham United FC vs Nottingham Forest FC,Draw,Nottingham Forest FC,False,-0.2,-0.2,LD
+West Ham United FC vs Nottingham Forest FC,DRAW,Nottingham Forest FC,False,-0.2,-0.2,LD
 Brentford FC vs Fulham FC,Brentford FC,Fulham FC,False,0.8,-0.6,W
 Leicester City FC vs Ipswich Town FC,Leicester City FC,Leicester City FC,True,-0.2,-0.6,DLL
 Arsenal FC vs Newcastle United FC,Newcastle United FC,Arsenal FC,False,0.0,0.4,DW
@@ -324,7 +324,7 @@ Fulham FC vs Manchester City FC,Manchester City FC,Manchester City FC,True,-0.2,
 Ipswich Town FC vs West Ham United FC,West Ham United FC,West Ham United FC,True,-0.8,-0.2,LD
 Liverpool FC vs Crystal Palace FC,Crystal Palace FC,DRAW,False,0.0,0.4,WW
 Manchester United FC vs Aston Villa FC,Aston Villa FC,Manchester United FC,False,-0.8,0.6,L
-Newcastle United FC vs Everton FC,Draw,Everton FC,False,0.0,0.0,DW
+Newcastle United FC vs Everton FC,DRAW,Everton FC,False,0.0,0.0,DW
 Nottingham Forest FC vs Chelsea FC,Chelsea FC,Chelsea FC,True,0.2,0.6,WL
 Southampton FC vs Arsenal FC,Arsenal FC,Arsenal FC,True,-0.6,0.2,DL
 Tottenham Hotspur FC vs Brighton & Hove Albion FC,Brighton & Hove Albion FC,Brighton & Hove Albion FC,True,-0.8,0.4,L
