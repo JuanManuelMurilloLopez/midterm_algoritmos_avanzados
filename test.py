@@ -1,52 +1,45 @@
-from domain.services.form import recent_form
-from domain.models.Team import Team
-from domain.models.Predictor import Predictor
+import pandas as pd
+
 from domain.services.loader import load_season_from_url
 from domain.services.normalizaer import normalize_matches
 
+from experiments.experiment_base import run as run_base
+from experiments.experiment_pattern import run as run_pattern
+from experiments.experiment_pipeline import run as run_full
+
 URL = "https://raw.githubusercontent.com/openfootball/football.json/master/2024-25/en.1.json"
 
-TEAM_A = "Fulham FC"
-TEAM_B = "Chelsea FC"
+print("Cargando datos...")
+season = load_season_from_url(URL)
+matches = normalize_matches(season["matches"])
 
+experiments = {
+    "baseline": run_base,
+    "pattern": run_pattern,
+    "pipeline": run_full
+}
 
-def run_test(matches, description):
-    formA = recent_form(matches, TEAM_A, n=15)
-    formB = recent_form(matches, TEAM_B, n=15)
+results_summary = []
 
-    teamA = Team(TEAM_A, formA)
-    teamB = Team(TEAM_B, formB)
+for name, exp in experiments.items():
+    print(f"\nEjecutando experimento: {name}")
+    rows = exp(matches)
 
-    predictor = Predictor(window_size=5)
-    winner, explanation = predictor.predict(teamA, teamB)
+    df = pd.DataFrame(rows)
+    accuracy = df["correct"].mean()
 
-    print("\n=== TEST:", description, "===")
-    print("Winner:", winner)
-    print("Rhythm A:", explanation["rhythm_A"])
-    print("Rhythm B:", explanation["rhythm_B"])
-    print("Pattern:", explanation["common_pattern"])
+    df.to_csv(f"results_{name}.csv", index=False)
 
+    results_summary.append({
+        "model": name,
+        "accuracy": accuracy,
+        "samples": len(df)
+    })
 
-def test_remove_last_k(matches, k):
-    reduced = matches[:-k]
-    run_test(reduced, f"Remove last {k} matches")
+    print(f"Accuracy {name}: {accuracy:.3f}")
 
+summary_df = pd.DataFrame(results_summary)
+summary_df.to_csv("results_summary.csv", index=False)
 
-def test_remove_random(matches, k):
-    import random
-    reduced = matches[:]
-    for i in sorted(random.sample(range(len(matches)), k), reverse=True):
-        reduced.pop(i)
-    run_test(reduced, f"Remove {k} random matches")
-
-
-if __name__ == "__main__":
-    season = load_season_from_url(URL)
-    matches = normalize_matches(season["matches"])
-
-    test_remove_last_k(matches, 1)
-    test_remove_last_k(matches, 3)
-    test_remove_last_k(matches, 5)
-
-    for i in range(3):
-        test_remove_random(matches, 5)
+print("\n=== RESUMEN FINAL ===")
+print(summary_df)

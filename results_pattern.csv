@@ -1,0 +1,331 @@
+match,predicted,actual,correct
+Newcastle United FC vs Manchester City FC,Manchester City FC,DRAW,False
+Arsenal FC vs Leicester City FC,Arsenal FC,Arsenal FC,True
+Brentford FC vs West Ham United FC,Brentford FC,DRAW,False
+Chelsea FC vs Brighton & Hove Albion FC,DRAW,Chelsea FC,False
+Everton FC vs Crystal Palace FC,Crystal Palace FC,Everton FC,False
+Nottingham Forest FC vs Fulham FC,Nottingham Forest FC,Fulham FC,False
+Wolverhampton Wanderers FC vs Liverpool FC,Liverpool FC,Liverpool FC,True
+Ipswich Town FC vs Aston Villa FC,Aston Villa FC,DRAW,False
+Manchester United FC vs Tottenham Hotspur FC,DRAW,Tottenham Hotspur FC,False
+AFC Bournemouth vs Southampton FC,AFC Bournemouth,AFC Bournemouth,True
+Crystal Palace FC vs Liverpool FC,Liverpool FC,Liverpool FC,True
+Arsenal FC vs Southampton FC,Arsenal FC,Arsenal FC,True
+Brentford FC vs Wolverhampton Wanderers FC,Brentford FC,Brentford FC,True
+Leicester City FC vs AFC Bournemouth,AFC Bournemouth,Leicester City FC,False
+Manchester City FC vs Fulham FC,DRAW,Manchester City FC,False
+West Ham United FC vs Ipswich Town FC,DRAW,West Ham United FC,False
+Everton FC vs Newcastle United FC,Newcastle United FC,DRAW,False
+Aston Villa FC vs Manchester United FC,Aston Villa FC,DRAW,False
+Chelsea FC vs Nottingham Forest FC,Chelsea FC,DRAW,False
+Brighton & Hove Albion FC vs Tottenham Hotspur FC,Tottenham Hotspur FC,Brighton & Hove Albion FC,False
+Tottenham Hotspur FC vs West Ham United FC,DRAW,Tottenham Hotspur FC,False
+Fulham FC vs Aston Villa FC,Aston Villa FC,Aston Villa FC,True
+Ipswich Town FC vs Everton FC,DRAW,Everton FC,False
+Manchester United FC vs Brentford FC,Brentford FC,Manchester United FC,False
+Newcastle United FC vs Brighton & Hove Albion FC,Newcastle United FC,Brighton & Hove Albion FC,False
+Southampton FC vs Leicester City FC,Leicester City FC,Leicester City FC,True
+AFC Bournemouth vs Arsenal FC,Arsenal FC,AFC Bournemouth,False
+Wolverhampton Wanderers FC vs Manchester City FC,Manchester City FC,Manchester City FC,True
+Liverpool FC vs Chelsea FC,DRAW,Liverpool FC,False
+Nottingham Forest FC vs Crystal Palace FC,Nottingham Forest FC,Nottingham Forest FC,True
+Leicester City FC vs Nottingham Forest FC,DRAW,Nottingham Forest FC,False
+Aston Villa FC vs AFC Bournemouth,Aston Villa FC,DRAW,False
+Brentford FC vs Ipswich Town FC,DRAW,Brentford FC,False
+Brighton & Hove Albion FC vs Wolverhampton Wanderers FC,Brighton & Hove Albion FC,DRAW,False
+Manchester City FC vs Southampton FC,Manchester City FC,Manchester City FC,True
+Everton FC vs Fulham FC,Everton FC,DRAW,False
+Chelsea FC vs Newcastle United FC,Chelsea FC,Chelsea FC,True
+Crystal Palace FC vs Tottenham Hotspur FC,Tottenham Hotspur FC,Crystal Palace FC,False
+West Ham United FC vs Manchester United FC,Manchester United FC,West Ham United FC,False
+Arsenal FC vs Liverpool FC,Liverpool FC,DRAW,False
+Newcastle United FC vs Arsenal FC,Arsenal FC,Newcastle United FC,False
+AFC Bournemouth vs Manchester City FC,Manchester City FC,AFC Bournemouth,False
+Ipswich Town FC vs Leicester City FC,Leicester City FC,DRAW,False
+Liverpool FC vs Brighton & Hove Albion FC,Liverpool FC,Liverpool FC,True
+Nottingham Forest FC vs West Ham United FC,Nottingham Forest FC,Nottingham Forest FC,True
+Southampton FC vs Everton FC,Everton FC,Southampton FC,False
+Wolverhampton Wanderers FC vs Crystal Palace FC,Crystal Palace FC,DRAW,False
+Tottenham Hotspur FC vs Aston Villa FC,Aston Villa FC,Tottenham Hotspur FC,False
+Manchester United FC vs Chelsea FC,Chelsea FC,DRAW,False
+Fulham FC vs Brentford FC,DRAW,Fulham FC,False
+Brentford FC vs AFC Bournemouth,AFC Bournemouth,Brentford FC,False
+Crystal Palace FC vs Fulham FC,Fulham FC,Fulham FC,True
+West Ham United FC vs Everton FC,Everton FC,DRAW,False
+Wolverhampton Wanderers FC vs Southampton FC,DRAW,Wolverhampton Wanderers FC,False
+Brighton & Hove Albion FC vs Manchester City FC,Manchester City FC,Brighton & Hove Albion FC,False
+Liverpool FC vs Aston Villa FC,Liverpool FC,Liverpool FC,True
+Manchester United FC vs Leicester City FC,Leicester City FC,Manchester United FC,False
+Nottingham Forest FC vs Newcastle United FC,Nottingham Forest FC,Newcastle United FC,False
+Tottenham Hotspur FC vs Ipswich Town FC,Tottenham Hotspur FC,Ipswich Town FC,False
+Chelsea FC vs Arsenal FC,Chelsea FC,DRAW,False
+Leicester City FC vs Chelsea FC,DRAW,Chelsea FC,False
+AFC Bournemouth vs Brighton & Hove Albion FC,Brighton & Hove Albion FC,Brighton & Hove Albion FC,True
+Arsenal FC vs Nottingham Forest FC,Nottingham Forest FC,Arsenal FC,False
+Aston Villa FC vs Crystal Palace FC,Aston Villa FC,DRAW,False
+Everton FC vs Brentford FC,Brentford FC,DRAW,False
+Fulham FC vs Wolverhampton Wanderers FC,Fulham FC,Wolverhampton Wanderers FC,False
+Manchester City FC vs Tottenham Hotspur FC,Manchester City FC,Tottenham Hotspur FC,False
+Southampton FC vs Liverpool FC,Liverpool FC,Liverpool FC,True
+Ipswich Town FC vs Manchester United FC,Manchester United FC,DRAW,False
+Newcastle United FC vs West Ham United FC,DRAW,West Ham United FC,False
+Brighton & Hove Albion FC vs Southampton FC,Brighton & Hove Albion FC,DRAW,False
+Brentford FC vs Leicester City FC,Brentford FC,Brentford FC,True
+Crystal Palace FC vs Newcastle United FC,DRAW,DRAW,True
+Nottingham Forest FC vs Ipswich Town FC,Nottingham Forest FC,Nottingham Forest FC,True
+Wolverhampton Wanderers FC vs AFC Bournemouth,Wolverhampton Wanderers FC,AFC Bournemouth,False
+West Ham United FC vs Arsenal FC,West Ham United FC,Arsenal FC,False
+Chelsea FC vs Aston Villa FC,Chelsea FC,Chelsea FC,True
+Manchester United FC vs Everton FC,Manchester United FC,Manchester United FC,True
+Tottenham Hotspur FC vs Fulham FC,Tottenham Hotspur FC,DRAW,False
+Liverpool FC vs Manchester City FC,Liverpool FC,Liverpool FC,True
+Ipswich Town FC vs Crystal Palace FC,Crystal Palace FC,Crystal Palace FC,True
+Leicester City FC vs West Ham United FC,West Ham United FC,Leicester City FC,False
+Everton FC vs Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,Everton FC,False
+Manchester City FC vs Nottingham Forest FC,Nottingham Forest FC,Manchester City FC,False
+Newcastle United FC vs Liverpool FC,Liverpool FC,DRAW,False
+Southampton FC vs Chelsea FC,Chelsea FC,Chelsea FC,True
+Arsenal FC vs Manchester United FC,DRAW,Arsenal FC,False
+Aston Villa FC vs Brentford FC,Brentford FC,Aston Villa FC,False
+Fulham FC vs Brighton & Hove Albion FC,DRAW,Fulham FC,False
+AFC Bournemouth vs Tottenham Hotspur FC,DRAW,AFC Bournemouth,False
+Aston Villa FC vs Southampton FC,DRAW,Aston Villa FC,False
+Brentford FC vs Newcastle United FC,Newcastle United FC,Brentford FC,False
+Crystal Palace FC vs Manchester City FC,Crystal Palace FC,DRAW,False
+Manchester United FC vs Nottingham Forest FC,Manchester United FC,Nottingham Forest FC,False
+Fulham FC vs Arsenal FC,DRAW,DRAW,True
+Ipswich Town FC vs AFC Bournemouth,AFC Bournemouth,AFC Bournemouth,True
+Leicester City FC vs Brighton & Hove Albion FC,Brighton & Hove Albion FC,DRAW,False
+Tottenham Hotspur FC vs Chelsea FC,Chelsea FC,Chelsea FC,True
+West Ham United FC vs Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,West Ham United FC,False
+Arsenal FC vs Everton FC,Arsenal FC,DRAW,False
+Liverpool FC vs Fulham FC,Liverpool FC,DRAW,False
+Newcastle United FC vs Leicester City FC,Newcastle United FC,Newcastle United FC,True
+Wolverhampton Wanderers FC vs Ipswich Town FC,Wolverhampton Wanderers FC,Ipswich Town FC,False
+Nottingham Forest FC vs Aston Villa FC,Aston Villa FC,Nottingham Forest FC,False
+Brighton & Hove Albion FC vs Crystal Palace FC,Brighton & Hove Albion FC,Crystal Palace FC,False
+Manchester City FC vs Manchester United FC,Manchester United FC,Manchester United FC,True
+Chelsea FC vs Brentford FC,Chelsea FC,Chelsea FC,True
+Southampton FC vs Tottenham Hotspur FC,Tottenham Hotspur FC,Tottenham Hotspur FC,True
+AFC Bournemouth vs West Ham United FC,AFC Bournemouth,DRAW,False
+Aston Villa FC vs Manchester City FC,Aston Villa FC,Aston Villa FC,True
+Brentford FC vs Nottingham Forest FC,Nottingham Forest FC,Nottingham Forest FC,True
+Ipswich Town FC vs Newcastle United FC,Newcastle United FC,Newcastle United FC,True
+West Ham United FC vs Brighton & Hove Albion FC,West Ham United FC,DRAW,False
+Crystal Palace FC vs Arsenal FC,Arsenal FC,Arsenal FC,True
+Everton FC vs Chelsea FC,Chelsea FC,DRAW,False
+Fulham FC vs Southampton FC,Fulham FC,DRAW,False
+Leicester City FC vs Wolverhampton Wanderers FC,Leicester City FC,Wolverhampton Wanderers FC,False
+Manchester United FC vs AFC Bournemouth,AFC Bournemouth,AFC Bournemouth,True
+Tottenham Hotspur FC vs Liverpool FC,Liverpool FC,Liverpool FC,True
+Manchester City FC vs Everton FC,Everton FC,DRAW,False
+AFC Bournemouth vs Crystal Palace FC,AFC Bournemouth,DRAW,False
+Chelsea FC vs Fulham FC,Chelsea FC,Fulham FC,False
+Newcastle United FC vs Aston Villa FC,DRAW,Newcastle United FC,False
+Nottingham Forest FC vs Tottenham Hotspur FC,Nottingham Forest FC,Nottingham Forest FC,True
+Southampton FC vs West Ham United FC,West Ham United FC,West Ham United FC,True
+Wolverhampton Wanderers FC vs Manchester United FC,Manchester United FC,Wolverhampton Wanderers FC,False
+Liverpool FC vs Leicester City FC,Liverpool FC,Liverpool FC,True
+Brighton & Hove Albion FC vs Brentford FC,Brentford FC,DRAW,False
+Arsenal FC vs Ipswich Town FC,Arsenal FC,Arsenal FC,True
+Leicester City FC vs Manchester City FC,Manchester City FC,Manchester City FC,True
+Crystal Palace FC vs Southampton FC,Crystal Palace FC,Crystal Palace FC,True
+Everton FC vs Nottingham Forest FC,Nottingham Forest FC,Nottingham Forest FC,True
+Fulham FC vs AFC Bournemouth,AFC Bournemouth,DRAW,False
+Tottenham Hotspur FC vs Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,DRAW,False
+West Ham United FC vs Liverpool FC,Liverpool FC,Liverpool FC,True
+Aston Villa FC vs Brighton & Hove Albion FC,Aston Villa FC,DRAW,False
+Ipswich Town FC vs Chelsea FC,Chelsea FC,Ipswich Town FC,False
+Manchester United FC vs Newcastle United FC,Newcastle United FC,Newcastle United FC,True
+Brentford FC vs Arsenal FC,Arsenal FC,Arsenal FC,True
+Tottenham Hotspur FC vs Newcastle United FC,Newcastle United FC,Newcastle United FC,True
+Southampton FC vs Brentford FC,Brentford FC,Brentford FC,True
+Crystal Palace FC vs Chelsea FC,Crystal Palace FC,DRAW,False
+AFC Bournemouth vs Everton FC,AFC Bournemouth,AFC Bournemouth,True
+Aston Villa FC vs Leicester City FC,Aston Villa FC,Aston Villa FC,True
+Manchester City FC vs West Ham United FC,West Ham United FC,Manchester City FC,False
+Brighton & Hove Albion FC vs Arsenal FC,Arsenal FC,DRAW,False
+Fulham FC vs Ipswich Town FC,Fulham FC,DRAW,False
+Liverpool FC vs Manchester United FC,Liverpool FC,DRAW,False
+Wolverhampton Wanderers FC vs Nottingham Forest FC,Nottingham Forest FC,Nottingham Forest FC,True
+West Ham United FC vs Fulham FC,Fulham FC,West Ham United FC,False
+Brentford FC vs Manchester City FC,Manchester City FC,DRAW,False
+Chelsea FC vs AFC Bournemouth,AFC Bournemouth,DRAW,False
+Nottingham Forest FC vs Liverpool FC,Nottingham Forest FC,DRAW,False
+Everton FC vs Aston Villa FC,Aston Villa FC,Aston Villa FC,True
+Leicester City FC vs Crystal Palace FC,Crystal Palace FC,Crystal Palace FC,True
+Newcastle United FC vs Wolverhampton Wanderers FC,Newcastle United FC,Newcastle United FC,True
+Arsenal FC vs Tottenham Hotspur FC,Arsenal FC,Arsenal FC,True
+Ipswich Town FC vs Brighton & Hove Albion FC,Ipswich Town FC,Brighton & Hove Albion FC,False
+Manchester United FC vs Southampton FC,Manchester United FC,Manchester United FC,True
+Newcastle United FC vs AFC Bournemouth,Newcastle United FC,AFC Bournemouth,False
+West Ham United FC vs Crystal Palace FC,Crystal Palace FC,Crystal Palace FC,True
+Leicester City FC vs Fulham FC,Fulham FC,Fulham FC,True
+Brentford FC vs Liverpool FC,Liverpool FC,Liverpool FC,True
+Arsenal FC vs Aston Villa FC,Arsenal FC,DRAW,False
+Manchester United FC vs Brighton & Hove Albion FC,Brighton & Hove Albion FC,Brighton & Hove Albion FC,True
+Nottingham Forest FC vs Southampton FC,Nottingham Forest FC,Nottingham Forest FC,True
+Everton FC vs Tottenham Hotspur FC,Everton FC,Everton FC,True
+Ipswich Town FC vs Manchester City FC,Manchester City FC,Manchester City FC,True
+Chelsea FC vs Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,Chelsea FC,False
+Liverpool FC vs Ipswich Town FC,Liverpool FC,Liverpool FC,True
+Wolverhampton Wanderers FC vs Arsenal FC,Arsenal FC,Arsenal FC,True
+Brighton & Hove Albion FC vs Everton FC,Brighton & Hove Albion FC,Everton FC,False
+Southampton FC vs Newcastle United FC,Newcastle United FC,Newcastle United FC,True
+AFC Bournemouth vs Nottingham Forest FC,Nottingham Forest FC,AFC Bournemouth,False
+Manchester City FC vs Chelsea FC,Manchester City FC,Manchester City FC,True
+Crystal Palace FC vs Brentford FC,Crystal Palace FC,Brentford FC,False
+Tottenham Hotspur FC vs Leicester City FC,Tottenham Hotspur FC,Leicester City FC,False
+Aston Villa FC vs West Ham United FC,Aston Villa FC,DRAW,False
+Fulham FC vs Manchester United FC,Fulham FC,Manchester United FC,False
+Nottingham Forest FC vs Brighton & Hove Albion FC,Nottingham Forest FC,Nottingham Forest FC,True
+Newcastle United FC vs Fulham FC,Newcastle United FC,Fulham FC,False
+Everton FC vs Leicester City FC,Everton FC,Everton FC,True
+AFC Bournemouth vs Liverpool FC,DRAW,Liverpool FC,False
+Ipswich Town FC vs Southampton FC,Ipswich Town FC,Southampton FC,False
+Wolverhampton Wanderers FC vs Aston Villa FC,Aston Villa FC,Wolverhampton Wanderers FC,False
+Manchester United FC vs Crystal Palace FC,Crystal Palace FC,Crystal Palace FC,True
+Brentford FC vs Tottenham Hotspur FC,Brentford FC,Tottenham Hotspur FC,False
+Arsenal FC vs Manchester City FC,Manchester City FC,Arsenal FC,False
+Chelsea FC vs West Ham United FC,Chelsea FC,Chelsea FC,True
+Everton FC vs Liverpool FC,Liverpool FC,DRAW,False
+Brighton & Hove Albion FC vs Chelsea FC,Chelsea FC,Brighton & Hove Albion FC,False
+Leicester City FC vs Arsenal FC,Arsenal FC,Arsenal FC,True
+Southampton FC vs AFC Bournemouth,AFC Bournemouth,AFC Bournemouth,True
+West Ham United FC vs Brentford FC,Brentford FC,Brentford FC,True
+Aston Villa FC vs Ipswich Town FC,Aston Villa FC,DRAW,False
+Manchester City FC vs Newcastle United FC,Manchester City FC,Manchester City FC,True
+Fulham FC vs Nottingham Forest FC,Nottingham Forest FC,Fulham FC,False
+Crystal Palace FC vs Everton FC,DRAW,Everton FC,False
+Liverpool FC vs Wolverhampton Wanderers FC,Liverpool FC,Liverpool FC,True
+Tottenham Hotspur FC vs Manchester United FC,Manchester United FC,Tottenham Hotspur FC,False
+Aston Villa FC vs Liverpool FC,Liverpool FC,DRAW,False
+Leicester City FC vs Brentford FC,Brentford FC,Brentford FC,True
+Everton FC vs Manchester United FC,Everton FC,DRAW,False
+Ipswich Town FC vs Tottenham Hotspur FC,Tottenham Hotspur FC,Tottenham Hotspur FC,True
+Fulham FC vs Crystal Palace FC,DRAW,Crystal Palace FC,False
+Arsenal FC vs West Ham United FC,Arsenal FC,West Ham United FC,False
+AFC Bournemouth vs Wolverhampton Wanderers FC,AFC Bournemouth,Wolverhampton Wanderers FC,False
+Southampton FC vs Brighton & Hove Albion FC,Brighton & Hove Albion FC,Brighton & Hove Albion FC,True
+Aston Villa FC vs Chelsea FC,Chelsea FC,Aston Villa FC,False
+Newcastle United FC vs Nottingham Forest FC,Nottingham Forest FC,Newcastle United FC,False
+Manchester City FC vs Liverpool FC,Liverpool FC,Liverpool FC,True
+Brighton & Hove Albion FC vs AFC Bournemouth,DRAW,Brighton & Hove Albion FC,False
+Crystal Palace FC vs Aston Villa FC,Crystal Palace FC,Crystal Palace FC,True
+Wolverhampton Wanderers FC vs Fulham FC,Fulham FC,Fulham FC,True
+Chelsea FC vs Southampton FC,Chelsea FC,Chelsea FC,True
+Nottingham Forest FC vs Arsenal FC,Arsenal FC,DRAW,False
+Brentford FC vs Everton FC,Everton FC,DRAW,False
+Tottenham Hotspur FC vs Manchester City FC,DRAW,Manchester City FC,False
+Manchester United FC vs Ipswich Town FC,Manchester United FC,Manchester United FC,True
+Liverpool FC vs Newcastle United FC,Liverpool FC,Liverpool FC,True
+West Ham United FC vs Leicester City FC,West Ham United FC,West Ham United FC,True
+Nottingham Forest FC vs Manchester City FC,Manchester City FC,Nottingham Forest FC,False
+Brighton & Hove Albion FC vs Fulham FC,DRAW,Brighton & Hove Albion FC,False
+Crystal Palace FC vs Ipswich Town FC,Crystal Palace FC,Crystal Palace FC,True
+Liverpool FC vs Southampton FC,Liverpool FC,Liverpool FC,True
+Brentford FC vs Aston Villa FC,Brentford FC,Aston Villa FC,False
+Wolverhampton Wanderers FC vs Everton FC,Everton FC,DRAW,False
+Tottenham Hotspur FC vs AFC Bournemouth,Tottenham Hotspur FC,DRAW,False
+Chelsea FC vs Leicester City FC,Chelsea FC,Chelsea FC,True
+Manchester United FC vs Arsenal FC,Arsenal FC,DRAW,False
+West Ham United FC vs Newcastle United FC,West Ham United FC,Newcastle United FC,False
+Everton FC vs West Ham United FC,Everton FC,DRAW,False
+Ipswich Town FC vs Nottingham Forest FC,Nottingham Forest FC,Nottingham Forest FC,True
+Manchester City FC vs Brighton & Hove Albion FC,Brighton & Hove Albion FC,DRAW,False
+Southampton FC vs Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,True
+AFC Bournemouth vs Brentford FC,Brentford FC,Brentford FC,True
+Arsenal FC vs Chelsea FC,DRAW,Arsenal FC,False
+Fulham FC vs Tottenham Hotspur FC,Tottenham Hotspur FC,Fulham FC,False
+Leicester City FC vs Manchester United FC,Manchester United FC,Manchester United FC,True
+Arsenal FC vs Fulham FC,DRAW,Arsenal FC,False
+Wolverhampton Wanderers FC vs West Ham United FC,DRAW,Wolverhampton Wanderers FC,False
+Nottingham Forest FC vs Manchester United FC,Manchester United FC,Nottingham Forest FC,False
+AFC Bournemouth vs Ipswich Town FC,AFC Bournemouth,Ipswich Town FC,False
+Brighton & Hove Albion FC vs Aston Villa FC,Brighton & Hove Albion FC,Aston Villa FC,False
+Manchester City FC vs Leicester City FC,Manchester City FC,Manchester City FC,True
+Newcastle United FC vs Brentford FC,Brentford FC,Newcastle United FC,False
+Southampton FC vs Crystal Palace FC,Crystal Palace FC,DRAW,False
+Liverpool FC vs Everton FC,Liverpool FC,Liverpool FC,True
+Chelsea FC vs Tottenham Hotspur FC,Tottenham Hotspur FC,Chelsea FC,False
+Everton FC vs Arsenal FC,Arsenal FC,DRAW,False
+Crystal Palace FC vs Brighton & Hove Albion FC,DRAW,Crystal Palace FC,False
+Ipswich Town FC vs Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,True
+West Ham United FC vs AFC Bournemouth,West Ham United FC,DRAW,False
+Aston Villa FC vs Nottingham Forest FC,DRAW,Aston Villa FC,False
+Brentford FC vs Chelsea FC,Chelsea FC,DRAW,False
+Fulham FC vs Liverpool FC,Liverpool FC,Fulham FC,False
+Tottenham Hotspur FC vs Southampton FC,Tottenham Hotspur FC,Tottenham Hotspur FC,True
+Manchester United FC vs Manchester City FC,Manchester United FC,DRAW,False
+Leicester City FC vs Newcastle United FC,Newcastle United FC,Newcastle United FC,True
+Manchester City FC vs Crystal Palace FC,Crystal Palace FC,Manchester City FC,False
+Brighton & Hove Albion FC vs Leicester City FC,Brighton & Hove Albion FC,DRAW,False
+Nottingham Forest FC vs Everton FC,Nottingham Forest FC,Everton FC,False
+Southampton FC vs Aston Villa FC,Aston Villa FC,Aston Villa FC,True
+Arsenal FC vs Brentford FC,Arsenal FC,DRAW,False
+Chelsea FC vs Ipswich Town FC,Chelsea FC,DRAW,False
+Liverpool FC vs West Ham United FC,Liverpool FC,Liverpool FC,True
+Wolverhampton Wanderers FC vs Tottenham Hotspur FC,Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,True
+Newcastle United FC vs Manchester United FC,Newcastle United FC,Newcastle United FC,True
+AFC Bournemouth vs Fulham FC,Fulham FC,AFC Bournemouth,False
+Newcastle United FC vs Crystal Palace FC,Newcastle United FC,Newcastle United FC,True
+Brentford FC vs Brighton & Hove Albion FC,DRAW,Brentford FC,False
+Crystal Palace FC vs AFC Bournemouth,Crystal Palace FC,DRAW,False
+Everton FC vs Manchester City FC,Manchester City FC,Manchester City FC,True
+West Ham United FC vs Southampton FC,West Ham United FC,DRAW,False
+Aston Villa FC vs Newcastle United FC,Newcastle United FC,Aston Villa FC,False
+Fulham FC vs Chelsea FC,Chelsea FC,Chelsea FC,True
+Ipswich Town FC vs Arsenal FC,Arsenal FC,Arsenal FC,True
+Manchester United FC vs Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,True
+Leicester City FC vs Liverpool FC,Liverpool FC,Liverpool FC,True
+Tottenham Hotspur FC vs Nottingham Forest FC,Nottingham Forest FC,Nottingham Forest FC,True
+Manchester City FC vs Aston Villa FC,Aston Villa FC,Manchester City FC,False
+Arsenal FC vs Crystal Palace FC,Arsenal FC,DRAW,False
+Chelsea FC vs Everton FC,Chelsea FC,Chelsea FC,True
+Brighton & Hove Albion FC vs West Ham United FC,West Ham United FC,Brighton & Hove Albion FC,False
+Newcastle United FC vs Ipswich Town FC,Newcastle United FC,Newcastle United FC,True
+Southampton FC vs Fulham FC,Fulham FC,Fulham FC,True
+Wolverhampton Wanderers FC vs Leicester City FC,Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,True
+AFC Bournemouth vs Manchester United FC,AFC Bournemouth,DRAW,False
+Liverpool FC vs Tottenham Hotspur FC,Liverpool FC,Liverpool FC,True
+Nottingham Forest FC vs Brentford FC,DRAW,Brentford FC,False
+Manchester City FC vs Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,Manchester City FC,False
+Aston Villa FC vs Fulham FC,Aston Villa FC,Aston Villa FC,True
+Everton FC vs Ipswich Town FC,DRAW,DRAW,True
+Leicester City FC vs Southampton FC,Southampton FC,Leicester City FC,False
+Arsenal FC vs AFC Bournemouth,Arsenal FC,AFC Bournemouth,False
+Brentford FC vs Manchester United FC,Brentford FC,Brentford FC,True
+Brighton & Hove Albion FC vs Newcastle United FC,Newcastle United FC,DRAW,False
+West Ham United FC vs Tottenham Hotspur FC,DRAW,DRAW,True
+Chelsea FC vs Liverpool FC,DRAW,Chelsea FC,False
+Crystal Palace FC vs Nottingham Forest FC,DRAW,DRAW,True
+Fulham FC vs Everton FC,DRAW,Everton FC,False
+Ipswich Town FC vs Brentford FC,Brentford FC,Brentford FC,True
+Southampton FC vs Manchester City FC,Manchester City FC,DRAW,False
+Wolverhampton Wanderers FC vs Brighton & Hove Albion FC,Wolverhampton Wanderers FC,Brighton & Hove Albion FC,False
+AFC Bournemouth vs Aston Villa FC,Aston Villa FC,Aston Villa FC,True
+Newcastle United FC vs Chelsea FC,Chelsea FC,Newcastle United FC,False
+Manchester United FC vs West Ham United FC,West Ham United FC,West Ham United FC,True
+Nottingham Forest FC vs Leicester City FC,DRAW,DRAW,True
+Tottenham Hotspur FC vs Crystal Palace FC,DRAW,Crystal Palace FC,False
+Liverpool FC vs Arsenal FC,Liverpool FC,DRAW,False
+Aston Villa FC vs Tottenham Hotspur FC,Aston Villa FC,Aston Villa FC,True
+Chelsea FC vs Manchester United FC,Chelsea FC,Chelsea FC,True
+Everton FC vs Southampton FC,Everton FC,Everton FC,True
+West Ham United FC vs Nottingham Forest FC,DRAW,Nottingham Forest FC,False
+Brentford FC vs Fulham FC,Brentford FC,Fulham FC,False
+Leicester City FC vs Ipswich Town FC,Leicester City FC,Leicester City FC,True
+Arsenal FC vs Newcastle United FC,Newcastle United FC,Arsenal FC,False
+Brighton & Hove Albion FC vs Liverpool FC,Liverpool FC,Brighton & Hove Albion FC,False
+Crystal Palace FC vs Wolverhampton Wanderers FC,Wolverhampton Wanderers FC,Crystal Palace FC,False
+Manchester City FC vs AFC Bournemouth,Manchester City FC,Manchester City FC,True
+AFC Bournemouth vs Leicester City FC,Leicester City FC,AFC Bournemouth,False
+Fulham FC vs Manchester City FC,Manchester City FC,Manchester City FC,True
+Ipswich Town FC vs West Ham United FC,West Ham United FC,West Ham United FC,True
+Liverpool FC vs Crystal Palace FC,Crystal Palace FC,DRAW,False
+Manchester United FC vs Aston Villa FC,Aston Villa FC,Manchester United FC,False
+Newcastle United FC vs Everton FC,DRAW,Everton FC,False
+Nottingham Forest FC vs Chelsea FC,Chelsea FC,Chelsea FC,True
+Southampton FC vs Arsenal FC,Arsenal FC,Arsenal FC,True
+Tottenham Hotspur FC vs Brighton & Hove Albion FC,Brighton & Hove Albion FC,Brighton & Hove Albion FC,True
+Wolverhampton Wanderers FC vs Brentford FC,Brentford FC,DRAW,False
