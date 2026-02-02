@@ -11,6 +11,9 @@ from domain.services.build_graph import build_team_graph
 from algorithms.dijkstra import dijkstra_explain
 import pandas as pd
 
+
+
+
 URL = "https://raw.githubusercontent.com/openfootball/football.json/master/2024-25/en.1.json"
 
 season_data = load_season_from_url(URL)

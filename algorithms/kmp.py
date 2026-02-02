@@ -17,3 +17,13 @@ def kmp_prefix_function(s):
     }
 
     return pi, explanation
+
+def kmp_contains(text, pattern):
+    if not pattern:
+        return False, None
+
+    combined = pattern + "#" + text
+    pi, explanation = kmp_prefix_function(combined)
+
+    found = any(v == len(pattern) for v in pi)
+    return found, explanation

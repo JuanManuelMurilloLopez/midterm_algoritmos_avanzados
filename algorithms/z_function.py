@@ -19,3 +19,14 @@ def z_function(s):
     }
 
     return z, explanation
+
+
+def z_relevance(pattern, form):
+    if not pattern:
+        return 0, None
+
+    combined = pattern + "#" + form
+    z, explanation = z_function(combined)
+
+    relevance = max(z)
+    return relevance, explanation
