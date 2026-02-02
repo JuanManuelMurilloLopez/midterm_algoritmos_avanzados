@@ -1,19 +1,24 @@
 from domain.services.loader import load_season_from_url
 from domain.services.normalizaer import normalize_matches
 from domain.services.form import recent_form
+from domain.services.data_analysis import print_analysis 
+from domain.services.data_analysis import generate_csv
 from domain.models.Team import Team
 from domain.models.Predictor import Predictor
 import time
 import tracemalloc
 from domain.services.build_graph import build_team_graph
 from algorithms.dijkstra import dijkstra_explain
-import csv
 import pandas as pd
 
 URL = "https://raw.githubusercontent.com/openfootball/football.json/master/2024-25/en.1.json"
 
 season_data = load_season_from_url(URL)
 matches = normalize_matches(season_data["matches"])
+
+lenght = 5
+results_rows = []
+
 
 teams = set()
 
@@ -38,19 +43,14 @@ print(f"Tiempo de ejecución: {end - start:.6f} segundos")
 print(f"Memoria usada: {current / 10**6:.6f} MB; Pico: {peak / 10**6:.6f} MB")
 
 elapsed = end - start
-print("\n=== EXPLICACIÓN ===")
+print("\n=== EXPLICACIÓN PARA UN ENFRENTAMIENTO ===")
 for k, v in explanation.items():
     print(f"{k}: {v}")
 
-
-
-
-
 print("\n=== INFERENCIA PROSPECTIVA ===")
 
-results_rows = []
 
-for i in range(5, len(matches)):
+for i in range(lenght, len(matches)):
     match = matches[i]
 
     home = match["home"]
@@ -84,7 +84,6 @@ for i in range(5, len(matches)):
 
 
 
-print("\n=== ===========================")
 
 for m in matches:
     teams.add(m["home"])
@@ -110,31 +109,8 @@ for e in explanation:
         f"{e['reason']}"
     )
 
-
-with open("results_inference.csv", "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(
-        f,
-        fieldnames=results_rows[0].keys()
-    )
-    writer.writeheader()
-    writer.writerows(results_rows)
-
-print("CSV generado: results_inference.csv")
-
+generate_csv(results_rows)
 
 df = pd.read_csv("results_inference.csv")
 
-print("=== HEAD ===")
-print(df.head())
-
-print("\n=== INFO ===")
-print(df.info())
-
-print("\n=== ACCURACY ===")
-print(df["correct"].mean())
-
-print("\nPredicciones por clase:")
-print(df["predicted_winner"].value_counts())
-
-print("\nErrores más comunes:")
-print(df[df["correct"] == False].head())
+print_analysis(df)
