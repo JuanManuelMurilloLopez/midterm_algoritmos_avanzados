@@ -1,66 +1,42 @@
 import heapq
 
 
-def dijkstra_explain(graph, start_team, target_team):
-    priority_queue = [(0.0, start_team)]
+def dijkstra_explain(graph, start, target):
+    pq = [(0.0, start)]
+    dist = {start: 0.0}
+    prev = {}
+    explanation = []
 
-    distance_from_start = {start_team: 0.0}
+    while pq:
+        cost, node = heapq.heappop(pq)
 
-    previous_team = {}
-
-    visited_teams = []
-
-    relaxations_log = []
-
-    while priority_queue:
-        current_cost, current_team = heapq.heappop(priority_queue)
-
-        if current_team in visited_teams:
-            continue
-
-        visited_teams.append(current_team)
-
-        if current_team == target_team:
+        if node == target:
             break
 
-        for edge in graph.adj.get(current_team, []):
-            neighbor_team = edge.to
-            edge_cost = edge.weight
-            new_cost = current_cost + edge_cost
+        for edge in graph.adj.get(node, []):
+            next_node = edge["to"]
+            weight = edge["weight"]
+            new_cost = cost + weight
 
-            if (
-                neighbor_team not in distance_from_start
-                or new_cost < distance_from_start[neighbor_team]
-            ):
-                relaxations_log.append({
-                    "from_team": current_team,
-                    "to_team": neighbor_team,
-                    "previous_cost": distance_from_start.get(neighbor_team),
-                    "new_cost": new_cost,
-                    "match_result": edge.meta["result"],
-                    "edge_cost": edge_cost
+            if next_node not in dist or new_cost < dist[next_node]:
+                dist[next_node] = new_cost
+                prev[next_node] = node
+                heapq.heappush(pq, (new_cost, next_node))
+
+                explanation.append({
+                    "from": node,
+                    "to": next_node,
+                    "edge_cost": weight,
+                    "total_cost": new_cost,
+                    "reason": f"ritmo del rival = {edge['meta']['rhythm']:.2f}"
                 })
 
-                distance_from_start[neighbor_team] = new_cost
-                previous_team[neighbor_team] = current_team
-                heapq.heappush(priority_queue, (new_cost, neighbor_team))
+    path = []
+    cur = target
+    while cur in prev:
+        path.append(cur)
+        cur = prev[cur]
+    path.append(start)
+    path.reverse()
 
-    if target_team not in distance_from_start:
-        return None, [], {
-            "reachable": False,
-            "visited_teams": visited_teams,
-            "relaxations": relaxations_log
-        }
-
-    optimal_path = [target_team]
-    while optimal_path[-1] != start_team:
-        optimal_path.append(previous_team[optimal_path[-1]])
-    optimal_path.reverse()
-
-    return distance_from_start[target_team], optimal_path, {
-        "reachable": True,
-        "optimal_path": optimal_path,
-        "total_cost": distance_from_start[target_team],
-        "visited_teams": visited_teams,
-        "relaxations": relaxations_log
-    }
+    return dist.get(target, float("inf")), path, explanation

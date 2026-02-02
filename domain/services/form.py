@@ -20,18 +20,12 @@ def result_for_team(match, team_name):
 
 def recent_form(matches, team_name, n=5):
     results = []
-    used = []
-
     for match in reversed(matches):
         r = result_for_team(match, team_name)
         if r:
             results.append(r)
-            used.append(match)
         if len(results) == n:
             break
 
-    print("=== PARTIDOS USADOS ===")
-    for m, r in zip(reversed(used), reversed(results)):
-        print(m["home"], "vs", m["away"], "→", r)
 
     return "".join(reversed(results))
