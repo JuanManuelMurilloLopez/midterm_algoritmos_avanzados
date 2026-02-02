@@ -37,5 +37,7 @@ def predict_from_pattern(pattern):
     else:
         return "E"
     
-def advantage_score(pattern):
-    return pattern.count("G") - pattern.count("P")
+def advantage_score(lcs_length, window_size):
+    if window_size == 0:
+        return 0.0
+    return lcs_length / window_size
