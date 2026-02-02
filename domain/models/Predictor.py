@@ -47,3 +47,13 @@ class Predictor:
         }
 
         return winner, explanation
+    
+    def get_winner(match):
+        hg, ag = match["ft"]
+        if hg > ag:
+            return match["home"]
+        elif ag > hg:
+            return match["away"]
+        else:
+            return "DRAW"
+

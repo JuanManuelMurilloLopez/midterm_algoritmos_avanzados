@@ -7,6 +7,8 @@ import time
 import tracemalloc
 from domain.services.build_graph import build_team_graph
 from algorithms.dijkstra import dijkstra_explain
+import csv
+import pandas as pd
 
 URL = "https://raw.githubusercontent.com/openfootball/football.json/master/2024-25/en.1.json"
 
@@ -41,6 +43,47 @@ for k, v in explanation.items():
     print(f"{k}: {v}")
 
 
+
+
+
+print("\n=== INFERENCIA PROSPECTIVA ===")
+
+results_rows = []
+
+for i in range(5, len(matches)):
+    match = matches[i]
+
+    home = match["home"]
+    away = match["away"]
+    past_matches = matches[:i]
+
+    form_home = recent_form(past_matches, home, n=5)
+    form_away = recent_form(past_matches, away, n=5)
+
+    if len(form_home) < 5 or len(form_away) < 5:
+        continue
+
+    team_home = Team(home, form_home)
+    team_away = Team(away, form_away)
+
+    score, explanation = predictor.predict(team_home, team_away)
+    predicted = explanation["winner"]
+    actual = Predictor.get_winner(match)
+
+    hit = predicted == actual
+
+    results_rows.append({
+        "match": f"{home} vs {away}",
+        "predicted_winner": predicted,
+        "actual_winner": actual,
+        "correct": hit,
+        "rhythm_home": explanation["rhythm_A"],
+        "rhythm_away": explanation["rhythm_B"],
+        "common_pattern": explanation["common_pattern"]
+    })
+
+
+
 print("\n=== ===========================")
 
 for m in matches:
@@ -66,3 +109,32 @@ for e in explanation:
         f"costo={round(e['edge_cost'],3)} | "
         f"{e['reason']}"
     )
+
+
+with open("results_inference.csv", "w", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(
+        f,
+        fieldnames=results_rows[0].keys()
+    )
+    writer.writeheader()
+    writer.writerows(results_rows)
+
+print("CSV generado: results_inference.csv")
+
+
+df = pd.read_csv("results_inference.csv")
+
+print("=== HEAD ===")
+print(df.head())
+
+print("\n=== INFO ===")
+print(df.info())
+
+print("\n=== ACCURACY ===")
+print(df["correct"].mean())
+
+print("\nPredicciones por clase:")
+print(df["predicted_winner"].value_counts())
+
+print("\nErrores más comunes:")
+print(df[df["correct"] == False].head())
