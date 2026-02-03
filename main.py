@@ -10,7 +10,8 @@ import tracemalloc
 from domain.services.build_graph import build_team_graph
 from algorithms.dijkstra import dijkstra_explain
 import pandas as pd
-from pruebas.robustness import robustness_score, truncate_form, random_remove
+
+from pruebas.fairness import rhythm_gap_fairness
 
 
 URL = "https://raw.githubusercontent.com/openfootball/football.json/master/2024-25/en.1.json"
@@ -24,7 +25,7 @@ results_rows = []
 
 teams = set()
 
-teamA_name = "Fulham FC"
+teamA_name = "Arsenal FC"
 teamB_name = "Chelsea FC"
 
 formA = recent_form(matches, teamA_name, n=5)
@@ -114,25 +115,8 @@ for e in explanation:
 generate_csv(results_rows)
 
 df = pd.read_csv("results_inference.csv")
+fairness = rhythm_gap_fairness(df, threshold=1/5)
+
 
 print_analysis(df)
-
-
-perturbations = [
-    lambda s: truncate_form(s, 1),
-    lambda s: truncate_form(s, 3),
-    lambda s: truncate_form(s, 5),
-    lambda s: random_remove(s, 5),
-    lambda s: truncate_form(s, 1),
-    lambda s: random_remove(s, 1),
-    lambda s: random_remove(s, 2),
-]
-
-robustness = robustness_score(
-    predictor,
-    teamA,
-    teamB,
-    perturbations
-)
-
-print("Robustez de la predicción:", round(robustness, 3))
+print("Fairness:", fairness)

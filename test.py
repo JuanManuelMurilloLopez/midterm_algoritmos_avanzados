@@ -6,6 +6,7 @@ from domain.services.form import recent_form
 from domain.models.Team import Team
 from domain.models.Predictor import Predictor
 from pruebas.robustness import truncate_form, random_remove, robustness_score
+from pruebas.fairness import rhythm_gap_fairness
 
 WINDOW = 5
 
@@ -167,6 +168,12 @@ def run_multi_league_experiments():
 
     print("\n=== RESUMEN MULTI-LIGA ===")
     print(df)
+    threshold = 1 / WINDOW
+    fairness = rhythm_gap_fairness(df, threshold)
+
+    print("\n=== FAIRNESS ANALYSIS ===")
+    for k, v in fairness.items():
+        print(f"{k}: {v}")
 
 
 if __name__ == "__main__":
