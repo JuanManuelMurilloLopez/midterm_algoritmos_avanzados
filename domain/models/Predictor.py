@@ -19,6 +19,16 @@ class Predictor:
 
 
     def predict(self, teamA, teamB, graph=None):
+        """
+        Params:
+            teamA (Team): Equipo local.
+            teamB (Team): Equipo visitante.
+            graph (TeamGraph | None): Grafo opcional para desempate.
+
+        Returns:
+            tuple[str, dict]: Equipo ganador estimado y explicación estructurada.
+        """
+
         epsilon = 1 / self.window_size  
         
         candidate_pairs = []
@@ -109,6 +119,14 @@ class Predictor:
         return winner, explanation
     
     def get_winner(match):
+        """
+        Params:
+            match (dict): Partido con marcador final.
+
+        Returns:
+            str: Nombre del equipo ganador o "DRAW".
+        """
+
         hg, ag = match["ft"]
         if hg > ag:
             return match["home"]

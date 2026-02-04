@@ -63,6 +63,14 @@ LEAGUES = {
 }
 
 def safe_matches(season):
+    """
+    Params:
+        season (dict): Temporada con lista de partidos crudos.
+
+    Returns:
+        list[dict]: Partidos normalizados con marcador final válido.
+    """
+
     out = []
     for m in season["matches"]:
         score = m.get("score", {})
@@ -76,6 +84,15 @@ def safe_matches(season):
     return out
 
 def evaluate_algorithmic_properties(predictor, matches):
+    """
+    Params:
+        predictor (Predictor): Algoritmo explicable.
+        matches (list[dict]): Partidos históricos.
+
+    Returns:
+        dict: Métricas algorítmicas (accuracy, estabilidad, determinismo, etc.).
+    """
+
     total = 0
     
     deterministic = 0
@@ -151,6 +168,14 @@ def evaluate_algorithmic_properties(predictor, matches):
     }
 
 def run_multi_league_tests():
+    """
+    Params:
+        None
+
+    Returns:
+        None: Ejecuta evaluación algorítmica en múltiples ligas y exporta CSV.
+    """
+
     rows = []
     print(f"{'League':<15} | {'LCS Acc':<8} | {'PR Acc':<8} | {'Agree':<8} | {'Samples'}")
     print("-" * 60)

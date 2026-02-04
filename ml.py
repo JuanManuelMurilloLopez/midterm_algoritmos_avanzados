@@ -20,24 +20,59 @@ SPORTS = {
         "url": "https://v3.football.api-sports.io/fixtures",
         "leagues": {
             "EPL": 39,
-            "LaLiga": 140
-        }
-    },
-    "hockey": {
-        "url": "https://v1.hockey.api-sports.io/games",
-        "leagues": {
-            "NHL": 57
+            "LaLiga": 140,
+            "SerieA": 135,
+            "Ligue1": 61,
+            "Bundesliga": 78,
+            "Eredivisie": 88,
+            "PrimeiraLiga": 94,
+            "LigaMX": 262,
+            "MLS": 253,
+            "BrasileiraoA": 71,
+            "ArgentinaPrimera": 128,
+            "SaudiProLeague": 307
         }
     },
     "baseball": {
         "url": "https://v1.baseball.api-sports.io/games",
         "leagues": {
-            "MLB": 1
+            "MLB": 1,
+            "NPB": 3,
+            "KBO": 5,
+            "LMB": 2,
+            "CPBL": 6
+        }
+    },
+    "hockey": {
+        "url": "https://v1.hockey.api-sports.io/games",
+        "leagues": {
+            "NHL": 57,
+            "AHL": 58,
+            "ECHL": 59,
+            "OHL": 60,
+            "QMJHL": 61,
+            "WHL": 62,
+            "KHL": 63,
+            "SHL": 64,
+            "Liiga": 65,
+            "DEL": 66,
+            "SwissNL": 67,
+            "CzechExtraliga": 68
         }
     }
 }
 
+
+
 def binary_outcome(match):
+    """
+    Params:
+        match (dict): Partido con clave "ft" = [home_score, away_score].
+
+    Returns:
+        int | None: 1 si gana home, -1 si gana away, None si empate.
+    """
+
     h, a = match["ft"]
     if h > a:
         return 1
@@ -46,7 +81,16 @@ def binary_outcome(match):
     else:
         return None
 
+
 def build_prestige_graph(matches):
+    """
+    Params:
+        matches (list[dict]): Lista de partidos históricos con claves "home", "away" y "ft".
+
+    Returns:
+        TeamGraph: Grafo dirigido que representa victorias como aristas ponderadas.
+    """
+
     graph = TeamGraph()
     for m in matches:
         h, a = m["home"], m["away"]
@@ -58,7 +102,18 @@ def build_prestige_graph(matches):
     return graph
 
 
+
 def calculate_pagerank(graph, damping=0.85, iterations=20):
+    """
+    Params:
+        graph (TeamGraph): Grafo de equipos con aristas dirigidas.
+        damping (float): Factor de amortiguamiento de PageRank.
+        iterations (int): Número de iteraciones.
+
+    Returns:
+        dict[str, float]: Puntaje PageRank por equipo.
+    """
+
     nodes = set(graph.adj.keys())
     for edges in graph.adj.values():
         for e in edges:
@@ -80,6 +135,14 @@ def calculate_pagerank(graph, damping=0.85, iterations=20):
     return pr
 
 def extract_features(matches):
+    """
+    Params:
+        matches (list[dict]): Lista ordenada temporalmente de partidos.
+
+    Returns:
+        pandas.DataFrame: Features explicables por partido y etiqueta binaria.
+    """
+
     predictor = Predictor(window_size=WINDOW)
     rows = []
 
@@ -114,6 +177,14 @@ def extract_features(matches):
     return pd.DataFrame(rows)
 
 def run_multisport_ml():
+    """
+    Params:
+        None
+
+    Returns:
+        None: Ejecuta entrenamiento y evaluación multi-deporte y guarda resultados.
+    """
+
     rows = []
 
     for sport, cfg in SPORTS.items():
