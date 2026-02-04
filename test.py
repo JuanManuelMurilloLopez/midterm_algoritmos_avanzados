@@ -4,14 +4,52 @@ from domain.services.normalizaer import normalize_matches
 from domain.services.form import recent_form
 from domain.models.Team import Team
 from domain.models.Predictor import Predictor
+from domain.models.TeamGraph import TeamGraph  
+
+
+def build_prestige_graph(matches):
+    graph = TeamGraph()
+    for m in matches:
+        home = m["home"]
+        away = m["away"]
+        hg, ag = m["ft"]
+        
+        if hg > ag: 
+            graph.add_edge(away, home, 1.0, meta={"result": "L"})
+        elif ag > hg:
+            graph.add_edge(home, away, 1.0, meta={"result": "L"})
+        else: 
+            graph.add_edge(home, away, 0.5, meta={"result": "D"})
+            graph.add_edge(away, home, 0.5, meta={"result": "D"})
+    return graph
+
+def calculate_pagerank(graph, damping=0.85, iterations=20):
+    nodes = set(graph.adj.keys())
+    for neighbors in graph.adj.values():
+        for edge in neighbors:
+            nodes.add(edge["to"])
+            
+    if not nodes: return {}
+    
+    pagerank = {node: 1.0 for node in nodes}
+    
+    for _ in range(iterations):
+        new_pagerank = {node: (1 - damping) for node in nodes}
+        for node in nodes:
+            outgoing = graph.adj.get(node, [])
+            if not outgoing: continue
+            
+            share = pagerank[node] * damping / len(outgoing)
+            for edge in outgoing:
+                new_pagerank[edge["to"]] += share
+        pagerank = new_pagerank
+    return pagerank
+
 def actual_winner(match):
     hg, ag = match["ft"]
-    if hg > ag:
-        return match["home"]
-    elif ag > hg:
-        return match["away"]
-    else:
-        return "Draw"
+    if hg > ag: return match["home"]
+    elif ag > hg: return match["away"]
+    else: return "Draw"
 
 WINDOW = 5
 
@@ -37,14 +75,17 @@ def safe_matches(season):
             })
     return out
 
-
 def evaluate_algorithmic_properties(predictor, matches):
     total = 0
+    
     deterministic = 0
     explained = 0
-    lcs_lengths = []
     stable = 0
-    correct = 0   # <-- accuracy
+    correct_lcs = 0
+    lcs_lengths = []
+
+    correct_pr = 0
+    agreement = 0 
 
     for i in range(WINDOW, len(matches)):
         match = matches[i]
@@ -58,74 +99,76 @@ def evaluate_algorithmic_properties(predictor, matches):
 
         team_h = Team(match["home"], form_h)
         team_a = Team(match["away"], form_a)
-
-        # predicción
-        winner, expl = predictor.predict(team_h, team_a)
         real = actual_winner(match)
 
-        # --- accuracy empírica ---
-        if winner == real:
-            correct += 1
+        winner_lcs, expl = predictor.predict(team_h, team_a)
+        
+        if winner_lcs == real:
+            correct_lcs += 1
 
-        # --- determinism ---
         w2, e2 = predictor.predict(team_h, team_a)
-        if winner == w2 and expl["common_pattern"] == e2["common_pattern"]:
+        if winner_lcs == w2 and expl["common_pattern"] == e2["common_pattern"]:
             deterministic += 1
-
-        # --- explanation coverage ---
         if expl.get("common_pattern"):
             explained += 1
             lcs_lengths.append(len(expl["common_pattern"]))
 
-        # --- local stability ---
         truncated_h = team_h.form[1:]
         truncated_a = team_a.form[1:]
-
-        if len(truncated_h) >= WINDOW - 1 and len(truncated_a) >= WINDOW - 1:
+        if len(truncated_h) >= WINDOW - 1:
             th = Team(match["home"], truncated_h)
             ta = Team(match["away"], truncated_a)
             w_trunc, _ = predictor.predict(th, ta)
-
-            if w_trunc == winner:
+            if w_trunc == winner_lcs:
                 stable += 1
+
+        pr_graph = build_prestige_graph(past)
+        pr_scores = calculate_pagerank(pr_graph, iterations=15)
+        
+        score_h = pr_scores.get(match["home"], 0.15)
+        score_a = pr_scores.get(match["away"], 0.15)
+        
+        if score_h > score_a: winner_pr = match["home"]
+        elif score_a > score_h: winner_pr = match["away"]
+        else: winner_pr = "Draw"
+
+        if winner_pr == real:
+            correct_pr += 1
+
+        if winner_lcs == winner_pr:
+            agreement += 1
 
         total += 1
 
     return {
         "samples": total,
-        "accuracy": round(correct / total, 3) if total else 0,
-        "determinism_rate": round(deterministic / total, 3) if total else 0,
-        "pattern_rate": round(explained / total, 3) if total else 0,
-        "avg_lcs_length": round(sum(lcs_lengths) / len(lcs_lengths), 3) if lcs_lengths else 0,
-        "local_stability": round(stable / total, 3) if total else 0
+        "acc_lcs": round(correct_lcs / total, 3) if total else 0,
+        "acc_pagerank": round(correct_pr / total, 3) if total else 0,
+        "agreement": round(agreement / total, 3) if total else 0, 
+        "determinism": round(deterministic / total, 3) if total else 0,
+        "stability": round(stable / total, 3) if total else 0,
+        "avg_lcs_len": round(sum(lcs_lengths) / len(lcs_lengths), 3) if lcs_lengths else 0
     }
-
-
 
 def run_multi_league_tests():
     rows = []
+    print(f"{'League':<15} | {'LCS Acc':<8} | {'PR Acc':<8} | {'Agree':<8} | {'Samples'}")
+    print("-" * 60)
 
     for league, url in LEAGUES.items():
-        print(f"\n=== {league} ===")
-
         season = load_season_from_url(url)
         matches = safe_matches(season)
-
         predictor = Predictor(window_size=WINDOW)
 
         metrics = evaluate_algorithmic_properties(predictor, matches)
         metrics["league"] = league
-
         rows.append(metrics)
 
-        print(metrics)
+        print(f"{league:<15} | {metrics['acc_lcs']:<8} | {metrics['acc_pagerank']:<8} | {metrics['agreement']:<8} | {metrics['samples']}")
 
     df = pd.DataFrame(rows)
-    df.to_csv("algorithmic_evaluation.csv", index=False)
-
-    print("\n=== RESUMEN MULTI-LIGA ===")
-    print(df)
-
+    df.to_csv("algorithmic_evaluation_with_pagerank.csv", index=False)
+    print("\nResultados guardados en 'algorithmic_evaluation_with_pagerank.csv'")
 
 if __name__ == "__main__":
     run_multi_league_tests()
