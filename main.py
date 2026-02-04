@@ -49,7 +49,8 @@ elapsed = end - start
 print("\n=== EXPLICACIÓN PARA UN ENFRENTAMIENTO ===")
 for k, v in explanation.items():
     print(f"{k}: {v}")
-
+tracemalloc.start()
+start = time.perf_counter()
 print("\n=== INFERENCIA PROSPECTIVA ===")
 
 
@@ -112,6 +113,12 @@ for e in explanation:
         f"{e['reason']}"
     )
 
+predictor = Predictor(window_size=5)
+end = time.perf_counter()
+current, peak = tracemalloc.get_traced_memory()
+tracemalloc.stop()
+print(f"Tiempo de ejecución: {end - start:.6f} segundos")
+print(f"Memoria usada: {current / 10**6:.6f} MB; Pico: {peak / 10**6:.6f} MB")
 generate_csv(results_rows)
 
 df = pd.read_csv("results_inference.csv")

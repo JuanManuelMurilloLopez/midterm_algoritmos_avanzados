@@ -1,12 +1,17 @@
-import random
 import pandas as pd
 from domain.services.loader import load_season_from_url
 from domain.services.normalizaer import normalize_matches
 from domain.services.form import recent_form
 from domain.models.Team import Team
 from domain.models.Predictor import Predictor
-from pruebas.robustness import truncate_form, random_remove, robustness_score
-from pruebas.fairness import rhythm_gap_fairness
+def actual_winner(match):
+    hg, ag = match["ft"]
+    if hg > ag:
+        return match["home"]
+    elif ag > hg:
+        return match["away"]
+    else:
+        return "Draw"
 
 WINDOW = 5
 
@@ -17,106 +22,33 @@ LEAGUES = {
     "EPL_2023": "https://raw.githubusercontent.com/openfootball/football.json/master/2023-24/en.1.json",
     "LA_LIGA_2023": "https://raw.githubusercontent.com/openfootball/football.json/master/2023-24/es.1.json",
     "BUNDESLIGA_2023": "https://raw.githubusercontent.com/openfootball/football.json/master/2023-24/de.1.json",
-    "EPL_2022": "https://raw.githubusercontent.com/openfootball/football.json/master/2022-23/en.1.json",
-    "LA_LIGA_2022": "https://raw.githubusercontent.com/openfootball/football.json/master/2022-23/es.1.json",
-    "BUNDESLIGA_2022": "https://raw.githubusercontent.com/openfootball/football.json/master/2022-23/de.1.json",
 }
 
-PERTURBATIONS = [
-    lambda s: truncate_form(s, 1),
-    lambda s: truncate_form(s, 3),
-    lambda s: truncate_form(s, 5),
-    lambda s: random_remove(s, 3),
-    lambda s: random_remove(s, 5),
-]
-
-def safe_normalize_matches(raw_matches):
-    normalized = []
-
-    for m in raw_matches:
+def safe_matches(season):
+    out = []
+    for m in season["matches"]:
         score = m.get("score", {})
-
-        # solo aceptamos ft bien formado
         ft = score.get("ft")
-        if not isinstance(ft, list) or len(ft) != 2:
-            continue
-
-        normalized.append({
-            "home": m["team1"],
-            "away": m["team2"],
-            "ft": ft
-        })
-
-    return normalized
+        if isinstance(ft, list) and len(ft) == 2:
+            out.append({
+                "home": m["team1"],
+                "away": m["team2"],
+                "ft": ft
+            })
+    return out
 
 
-def filter_finished_matches(matches):
-    filtered = []
-    for m in matches:
-        if "ft" in m and isinstance(m["ft"], list) and len(m["ft"]) == 2:
-            filtered.append(m)
-    return filtered
-
-
-def actual_winner(match):
-    hg, ag = match["ft"]
-    if hg > ag:
-        return match["home"]
-    elif ag > hg:
-        return match["away"]
-    else:
-        return "Draw"
-
-
-def evaluate_model(predictor, matches):
-    correct = 0
-    explained = 0
+def evaluate_algorithmic_properties(predictor, matches):
     total = 0
+    deterministic = 0
+    explained = 0
+    lcs_lengths = []
+    stable = 0
+    correct = 0   # <-- accuracy
 
     for i in range(WINDOW, len(matches)):
         match = matches[i]
         past = matches[:i]
-
-        home = match["home"]
-        away = match["away"]
-
-        form_h = recent_form(past, home, WINDOW)
-        form_a = recent_form(past, away, WINDOW)
-
-        if len(form_h) < WINDOW or len(form_a) < WINDOW:
-            continue
-
-        team_h = Team(home, form_h)
-        team_a = Team(away, form_a)
-
-        winner, explanation = predictor.predict(team_h, team_a)
-        actual = actual_winner(match)
-
-        total += 1
-        if winner == actual:
-            correct += 1
-
-        if explanation.get("common_pattern"):
-            explained += 1
-
-    accuracy = correct / total if total else 0
-    coverage = explained / total if total else 0
-
-    return accuracy, coverage, total
-
-
-def evaluate_robustness(predictor, matches, samples=40):
-    scores = []
-
-    valid_matches = matches[WINDOW:]
-    if len(valid_matches) < samples:
-        samples = len(valid_matches)
-
-    sampled = random.sample(valid_matches, samples)
-
-    for match in sampled:
-        idx = matches.index(match)
-        past = matches[:idx]
 
         form_h = recent_form(past, match["home"], WINDOW)
         form_a = recent_form(past, match["away"], WINDOW)
@@ -127,54 +59,73 @@ def evaluate_robustness(predictor, matches, samples=40):
         team_h = Team(match["home"], form_h)
         team_a = Team(match["away"], form_a)
 
-        r = robustness_score(
-            predictor,
-            team_h,
-            team_a,
-            PERTURBATIONS
-        )
-        scores.append(r)
+        # predicción
+        winner, expl = predictor.predict(team_h, team_a)
+        real = actual_winner(match)
 
-    return sum(scores) / len(scores) if scores else 0
+        # --- accuracy empírica ---
+        if winner == real:
+            correct += 1
+
+        # --- determinism ---
+        w2, e2 = predictor.predict(team_h, team_a)
+        if winner == w2 and expl["common_pattern"] == e2["common_pattern"]:
+            deterministic += 1
+
+        # --- explanation coverage ---
+        if expl.get("common_pattern"):
+            explained += 1
+            lcs_lengths.append(len(expl["common_pattern"]))
+
+        # --- local stability ---
+        truncated_h = team_h.form[1:]
+        truncated_a = team_a.form[1:]
+
+        if len(truncated_h) >= WINDOW - 1 and len(truncated_a) >= WINDOW - 1:
+            th = Team(match["home"], truncated_h)
+            ta = Team(match["away"], truncated_a)
+            w_trunc, _ = predictor.predict(th, ta)
+
+            if w_trunc == winner:
+                stable += 1
+
+        total += 1
+
+    return {
+        "samples": total,
+        "accuracy": round(correct / total, 3) if total else 0,
+        "determinism_rate": round(deterministic / total, 3) if total else 0,
+        "pattern_rate": round(explained / total, 3) if total else 0,
+        "avg_lcs_length": round(sum(lcs_lengths) / len(lcs_lengths), 3) if lcs_lengths else 0,
+        "local_stability": round(stable / total, 3) if total else 0
+    }
 
 
-def run_multi_league_experiments():
-    summary = []
 
-    for league_name, url in LEAGUES.items():
-        print(f"\n=== LIGA: {league_name} ===")
+def run_multi_league_tests():
+    rows = []
+
+    for league, url in LEAGUES.items():
+        print(f"\n=== {league} ===")
 
         season = load_season_from_url(url)
-        matches = safe_normalize_matches(season["matches"])
-
-        print(f"Partidos válidos: {len(matches)}")
+        matches = safe_matches(season)
 
         predictor = Predictor(window_size=WINDOW)
 
-        acc, cov, total = evaluate_model(predictor, matches)
-        rob = evaluate_robustness(predictor, matches)
+        metrics = evaluate_algorithmic_properties(predictor, matches)
+        metrics["league"] = league
 
-        summary.append({
-            "league": league_name,
-            "accuracy": round(acc, 3),
-            "robustness": round(rob, 3),
-            "coverage": round(cov, 3),
-            "samples": total
-        })
+        rows.append(metrics)
 
+        print(metrics)
 
-    df = pd.DataFrame(summary)
-    df.to_csv("multi_league_results.csv", index=False)
+    df = pd.DataFrame(rows)
+    df.to_csv("algorithmic_evaluation.csv", index=False)
 
     print("\n=== RESUMEN MULTI-LIGA ===")
     print(df)
-    threshold = 1 / WINDOW
-    fairness = rhythm_gap_fairness(df, threshold)
-
-    print("\n=== FAIRNESS ANALYSIS ===")
-    for k, v in fairness.items():
-        print(f"{k}: {v}")
 
 
 if __name__ == "__main__":
-    run_multi_league_experiments()
+    run_multi_league_tests()
