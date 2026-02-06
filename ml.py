@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import StandardScaler
 
+from domain.services.Benchmark import Benchmark
 from domain.services.multisport_loader import load_or_fetch
 from domain.services.form import recent_form
 from domain.models.Team import Team
@@ -175,25 +176,46 @@ def run_multisport_ml():
     """
 
     rows = []
+    rows_benchmarks = []
 
     for sport, cfg in SPORTS.items():
         for league, league_id in cfg["leagues"].items():
             print(f"\n=== {sport.upper()} | {league} ===")
 
+            bench = Benchmark(
+                script_name="ml.py",
+                experiment_name=f"load_{sport}_{league}",
+                samples=20
+            )
+            bench.start()
             matches = load_or_fetch(
                 sport,
                 league,
                 {"url": cfg["url"], "league_id": league_id}
             )
-
+            bench.stop()
+            rows_benchmarks.append(bench.result())
+            bench = Benchmark(
+                script_name="ml.py",
+                experiment_name=f"extract_features_{league}",
+                samples=len(SPORTS[sport]["leagues"])
+            )
+            bench.start()
             df = extract_features(matches)
+            bench.stop()
+            rows_benchmarks.append(bench.result())
             if len(df) < 80:
                 print("Datos insuficientes")
                 continue
 
             X = df.drop(columns=["label"])
             y = df["label"]
-
+            bench = Benchmark(
+                script_name="ml.py",
+                experiment_name=f"train_ml_{league}",
+                samples=len(X)
+            )
+            bench.start()
             X_scaled = X.values
 
 
@@ -212,9 +234,18 @@ def run_multisport_ml():
 
             model.fit(X_train, y_train)
             y_pred = model.predict(X_test)
+            bench.stop()
+            rows_benchmarks.append(bench.result())
 
+            bench = Benchmark(
+                script_name="ml.py",
+                experiment_name=f"evaluate_ml_{league}",
+                samples=len(y_test)
+            )
+            bench.start()
             acc = accuracy_score(y_test, y_pred)
-
+            bench.stop()
+            rows_benchmarks.append(bench.result())
             print(f"Binary ML Accuracy: {acc:.3f}")
 
             rows.append({
@@ -228,6 +259,11 @@ def run_multisport_ml():
     print("\n=== MULTISPORT ML (BINARY) ===")
     print(summary)
     summary.to_csv("multisport_ml_binary.csv", index=False)
+    df_bench = pd.DataFrame(rows_benchmarks)
+    print("\n=== BENCHMARK MULTISPORT PIPELINE (RAW) ===")
+    print(df_bench)
+    df_bench.to_csv("benchmark_multisport_pipeline.csv", index=False)
+    print("\nBenchmark guardado en benchmark_multisport_pipeline.csv")
 
 
 if __name__ == "__main__":
