@@ -1,0 +1,4 @@
+sport,samples,ml_binary_accuracy
+football,2332,0.554
+baseball,5000,0.523
+hockey,3411,0.536

@@ -1,0 +1,6 @@
+run,sports_used,samples,accuracy
+1,"hockey,baseball",1500,0.518
+2,"baseball,hockey",1500,0.509
+3,"football,hockey",1500,0.536
+4,"baseball,football",1500,0.558
+5,"football,hockey",1500,0.6
