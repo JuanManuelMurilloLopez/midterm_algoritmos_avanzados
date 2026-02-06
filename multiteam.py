@@ -19,20 +19,36 @@ SPORTS = {
     "football": {
         "url": "https://v3.football.api-sports.io/fixtures",
         "leagues": {
-            "EPL": 39,
-            "LaLiga": 140
-        }
-    },
-    "hockey": {
-        "url": "https://v1.hockey.api-sports.io/games",
-        "leagues": {
-            "NHL": 57
+           "EPL": 39,
+            "LaLiga": 140,
+            "SerieA": 135,
+            "Ligue1": 61,
+            "Bundesliga": 78,
+        "Eredivisie": 88,
+        "PrimeiraLiga": 94,
+        "LigaMX": 262,
+        "MLS": 253,
+        "BrasileiraoA": 71,
         }
     },
     "baseball": {
         "url": "https://v1.baseball.api-sports.io/games",
         "leagues": {
-            "MLB": 1
+            "MLB": 1,
+            "NPB": 3,
+            "KBO": 5,
+            "LMB": 2,
+            "CPBL": 6
+        }
+    },
+    "hockey": {
+        "url": "https://v1.hockey.api-sports.io/games",
+        "leagues": {
+            "NHL": 57,
+            "AHL": 58,
+            "ECHL": 59,
+            "OHL": 60,
+            "WHL": 62,
         }
     }
 }
