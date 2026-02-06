@@ -194,7 +194,6 @@ def run_multisport_ml():
             X = df.drop(columns=["label"])
             y = df["label"]
 
-            scaler = StandardScaler()
             X_scaled = X.values
 
 
@@ -204,7 +203,7 @@ def run_multisport_ml():
 
             model = RandomForestClassifier(
                 n_estimators=500,
-                max_depth=6,
+                max_depth=8,
                 min_samples_leaf=10,
                 class_weight="balanced",
                 random_state=RANDOM_STATE
