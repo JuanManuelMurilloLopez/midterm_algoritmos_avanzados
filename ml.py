@@ -12,7 +12,7 @@ from domain.models.Predictor import Predictor
 from domain.models.TeamGraph import TeamGraph
 
 WINDOW = 5
-TEST_RATIO = 0.3
+TEST_RATIO = 0.1
 RANDOM_STATE = 42
 
 SPORTS = {
@@ -29,8 +29,16 @@ SPORTS = {
         "LigaMX": 262,
         "MLS": 253,
         "BrasileiraoA": 71,
-        "ArgentinaPrimera": 128,
-        "SaudiProLeague": 307
+        }
+    },
+    "baseball": {
+        "url": "https://v1.baseball.api-sports.io/games",
+        "leagues": {
+            "MLB": 1,
+            "NPB": 3,
+            "KBO": 5,
+            "LMB": 2,
+            "CPBL": 6
         }
     },
     "hockey": {
@@ -40,19 +48,10 @@ SPORTS = {
             "AHL": 58,
             "ECHL": 59,
             "OHL": 60,
-            "QMJHL": 61,
             "WHL": 62,
-            "KHL": 63,
-            "SHL": 64,
-            "Liiga": 65,
-            "DEL": 66,
-            "SwissNL": 67,
-            "CzechExtraliga": 68
         }
     }
 }
-
-
 
 def binary_outcome(match):
     """
@@ -196,18 +195,21 @@ def run_multisport_ml():
             y = df["label"]
 
             scaler = StandardScaler()
-            X_scaled = scaler.fit_transform(X)
+            X_scaled = X.values
+
 
             split = int(len(X_scaled) * (1 - TEST_RATIO))
             X_train, X_test = X_scaled[:split], X_scaled[split:]
             y_train, y_test = y.iloc[:split], y.iloc[split:]
 
             model = RandomForestClassifier(
-                n_estimators=300,
-                max_depth=10,
+                n_estimators=500,
+                max_depth=6,
+                min_samples_leaf=10,
                 class_weight="balanced",
                 random_state=RANDOM_STATE
             )
+
 
             model.fit(X_train, y_train)
             y_pred = model.predict(X_test)
