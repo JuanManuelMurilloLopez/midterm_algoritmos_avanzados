@@ -8,6 +8,7 @@ API_KEY = "2c2c9404e752f03de3d3026da8552fcf"
 HEADERS = {"x-apisports-key": API_KEY}
 SEASON = 2024
 CACHE_DIR = "cache_api"
+OFFLINE_MODE = True
 
 os.makedirs(CACHE_DIR, exist_ok=True)
 
@@ -16,20 +17,22 @@ def load_or_fetch(sport, league_name, cfg):
     path = f"{CACHE_DIR}/{sport}_{league_name}.csv"
 
     if os.path.exists(path):
-        try:
-            df = pd.read_csv(path)
+        df = pd.read_csv(path)
 
-            if df.empty:
-                raise ValueError("Empty cache")
-
+        if not df.empty:
             df["ft"] = df["ft"].apply(
                 lambda x: ast.literal_eval(x) if isinstance(x, str) else x
             )
-
+            print(f"[CACHE] {sport} | {league_name} ({len(df)} matches)")
             return df.to_dict("records")
 
-        except Exception:
-            pass
+    if OFFLINE_MODE:
+        raise RuntimeError(
+            f"No cache found for {sport}-{league_name} and OFFLINE_MODE=True"
+        )
+
+    print(f"[API] Fetching {sport} | {league_name}")
+
     r = requests.get(
         cfg["url"],
         headers=HEADERS,
