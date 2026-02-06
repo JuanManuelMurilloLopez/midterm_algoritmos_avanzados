@@ -51,7 +51,7 @@ class Benchmark:
             "script": self.script_name,
             "experiment": self.experiment_name,
             "samples": self.samples,
-            "time_sec": round(self.end_time - self.start_time, 6),
-            "mem_current_mb": round(self.current_mem / 10**6, 3),
-            "mem_peak_mb": round(self.peak_mem / 10**6, 3),
+            "time_sec": round(self.end_time - self.start_time, 12),
+            "mem_current_mb": round(self.current_mem / 10**6, 12),
+            "mem_peak_mb": round(self.peak_mem / 10**6, 6),
         }

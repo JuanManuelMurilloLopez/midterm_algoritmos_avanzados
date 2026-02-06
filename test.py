@@ -1,4 +1,5 @@
 import pandas as pd
+from domain.services.Benchmark import Benchmark
 from domain.services.loader import load_season_from_url
 from domain.services.normalizaer import normalize_matches
 from domain.services.form import recent_form
@@ -6,6 +7,7 @@ from domain.models.Team import Team
 from domain.models.Predictor import Predictor
 from domain.models.TeamGraph import TeamGraph  
 
+rows_benchmarks = []
 
 def build_prestige_graph(matches):
     graph = TeamGraph()
@@ -167,6 +169,14 @@ def evaluate_algorithmic_properties(predictor, matches):
         "avg_lcs_len": round(sum(lcs_lengths) / len(lcs_lengths), 3) if lcs_lengths else 0
     }
 
+bench_global = Benchmark(
+    script_name="test.py",
+    experiment_name="multi_league_full_test",
+    samples=len(LEAGUES)
+)
+
+bench_global.start()
+
 def run_multi_league_tests():
     """
     Params:
@@ -181,19 +191,61 @@ def run_multi_league_tests():
     print("-" * 60)
 
     for league, url in LEAGUES.items():
-        season = load_season_from_url(url)
-        matches = safe_matches(season)
-        predictor = Predictor(window_size=WINDOW)
+        bench = Benchmark(
+            script_name="test.py",
+            experiment_name=f"load_season_{league}",
+            samples=6
+        )
 
+        bench.start()
+
+        season = load_season_from_url(url)
+        bench.stop()
+        rows_benchmarks.append(bench.result())
+        bench = Benchmark(
+                script_name="test.py",
+                experiment_name=f"safe_matches_{league}",
+                samples=len(season["matches"])
+            )
+        bench.start()
+        matches = safe_matches(season)
+        bench.stop()
+        rows_benchmarks.append(bench.result())
+        bench = Benchmark(
+                script_name="test.py",
+                experiment_name=f"Predictor_init_{league}",
+                samples=len(season["matches"])
+            )
+        bench.start()
+        predictor = Predictor(window_size=WINDOW)
+        bench.stop()
+        rows_benchmarks.append(bench.result())
+        bench = Benchmark(
+                script_name="test.py",
+                experiment_name=f"Evaluation of Algorithmic{league}",
+                samples=len(matches)
+            )
+        bench.start()
         metrics = evaluate_algorithmic_properties(predictor, matches)
+        bench.stop()
+        rows_benchmarks.append(bench.result())
         metrics["league"] = league
         rows.append(metrics)
 
         print(f"{league:<15} | {metrics['acc_lcs']:<8} | {metrics['acc_pagerank']:<8} | {metrics['agreement']:<8} | {metrics['samples']}")
 
     df = pd.DataFrame(rows)
+    bench_global.stop()
+    rows_benchmarks.append(bench.result())
+
     df.to_csv("algorithmic_evaluation_with_pagerank.csv", index=False)
     print("\nResultados guardados en 'algorithmic_evaluation_with_pagerank.csv'")
+
+    df_bench = pd.DataFrame(rows_benchmarks)
+    df_bench.to_csv("benchmark_test_pipeline.csv", index=False)
+    print("\nBenchmark guardado en 'benchmark_test_pipeline.csv'")
+    print("\n=== BENCHMARK TEST PIPELINE (RAW) ===")
+    print(df_bench)
 
 if __name__ == "__main__":
     run_multi_league_tests()

@@ -11,8 +11,7 @@ def print_analysis(df):
     print("\nPredicciones por clase:")
     print(df["predicted_winner"].value_counts())
 
-    print("\nErrores más comunes:")
-    print(df[df["correct"] == False].head())
+
 
 def generate_csv(results_rows):
     with open("results_inference.csv", "w", newline="", encoding="utf-8") as f:
