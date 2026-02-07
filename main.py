@@ -12,6 +12,7 @@ from algorithms.dijkstra import dijkstra_explain
 import pandas as pd
 from pruebas.fairness import rhythm_gap_fairness
 from domain.services.Benchmark import Benchmark
+from domain.services.get_configuration import print_hardware_config
 
 
 URL = "https://raw.githubusercontent.com/openfootball/football.json/master/2024-25/en.1.json"
@@ -204,3 +205,4 @@ df_bench_summary = (
 
 print("\n=== BENCHMARK TEST PIPELINE (SUMMARY: MEAN & MEDIAN) ===")
 print(df_bench_summary)
+print_hardware_config()
