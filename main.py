@@ -187,3 +187,20 @@ print(df_pipeline)
 print("\n=== BENCHMARK: PREDICTOR ===")
 df_predictor = pd.DataFrame(results_benchmark_predictor)
 print(df_predictor)
+df_bench_summary = (
+    df_pipeline
+    .groupby("experiment", as_index=False)
+    .agg(
+        samples=("samples", "first"),
+        mean_time_sec=("time_sec", "mean"),
+        median_time_sec=("time_sec", "median"),
+        mean_mem_current_mb=("mem_current_mb", "mean"),
+        median_mem_current_mb=("mem_current_mb", "median"),
+        mean_mem_peak_mb=("mem_peak_mb", "mean"),
+        median_mem_peak_mb=("mem_peak_mb", "median"),
+        runs=("time_sec", "count")
+    )
+)
+
+print("\n=== BENCHMARK TEST PIPELINE (SUMMARY: MEAN & MEDIAN) ===")
+print(df_bench_summary)

@@ -264,6 +264,19 @@ def run_multisport_ml():
     print(df_bench)
     df_bench.to_csv("benchmark_multisport_pipeline.csv", index=False)
     print("\nBenchmark guardado en benchmark_multisport_pipeline.csv")
+    df_bench_global = pd.DataFrame([{
+        "mean_time_sec": df_bench["time_sec"].mean(),
+        "median_time_sec": df_bench["time_sec"].median(),
+        "mean_mem_current_mb": df_bench["mem_current_mb"].mean(),
+        "median_mem_current_mb": df_bench["mem_current_mb"].median(),
+        "mean_mem_peak_mb": df_bench["mem_peak_mb"].mean(),
+        "median_mem_peak_mb": df_bench["mem_peak_mb"].median(),
+        "runs": len(df_bench)
+    }])
+
+    print("\n=== BENCHMARK MULTISPORT PIPELINE (GLOBAL SUMMARY) ===")
+    print(df_bench_global)
+
 
 
 if __name__ == "__main__":

@@ -246,6 +246,20 @@ def run_multi_league_tests():
     print("\nBenchmark guardado en 'benchmark_test_pipeline.csv'")
     print("\n=== BENCHMARK TEST PIPELINE (RAW) ===")
     print(df_bench)
+    df_bench_summary = pd.DataFrame([{
+        "mean_time_sec": df_bench["time_sec"].mean(),
+        "median_time_sec": df_bench["time_sec"].median(),
+        "mean_mem_current_mb": df_bench["mem_current_mb"].mean(),
+        "median_mem_current_mb": df_bench["mem_current_mb"].median(),
+        "mean_mem_peak_mb": df_bench["mem_peak_mb"].mean(),
+        "median_mem_peak_mb": df_bench["mem_peak_mb"].median(),
+        "runs": len(df_bench)
+    }])
+
+    print("\n=== BENCHMARK TEST PIPELINE (SUMMARY: MEAN & MEDIAN) ===")
+    print(df_bench_summary)
+
+
 
 if __name__ == "__main__":
     run_multi_league_tests()
