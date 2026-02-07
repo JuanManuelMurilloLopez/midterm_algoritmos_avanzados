@@ -1,6 +1,11 @@
+
 # midterm_algoritmos_avanzados
 Repositorio para el proyecto de la materia de Análisis y Diseño de Algoritmos Avanzados
 
+# Autores
+Juan Manuel Murillo López - A01712218
+Uriel Suárez López - A01657783
+Rommel Pacheco Hernández - A01709035
 # Dependencias
 
 	pip install numpy pandas scikit-learn 
